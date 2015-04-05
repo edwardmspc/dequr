@@ -1,6 +1,0 @@
-{
-    'Python': {
-        'python': '/home/python/.virtualenvs/dequr/bin/python',
-        'pythonExtraPaths': ['/home/python/.virtualenvs/dequr/bin', '/usr/lib/python2.7/plat-x86_64-linux-gnu', '/usr/lib/python2.7/lib-tk', '/home/python/.virtualenvs/dequr/local/lib/python2.7/site-packages', '/home/python/.virtualenvs/dequr/lib/python2.7', '/usr/lib/python2.7', '/home/python/.virtualenvs/dequr/lib/python2.7/lib-dynload']
-    }
-}
