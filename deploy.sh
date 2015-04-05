@@ -1,4 +1,4 @@
 #!/bin/sh
-cd ~/home/dequr/
+cd /home/dequr
 git pull origin master
 sudo supervisorctl restart dequr
