@@ -144,7 +144,7 @@ USE_TZ = True
 if DEBUG:
     STATICFILES_DIRS = [BASE_DIR.child('static')]
 else:
-    STATIC_ROOT = BASE_DIR.child('static')
+#    STATIC_ROOT = BASE_DIR.child('static')
     STATICFILES_DIRS = []
 
 STATIC_URL = '/static/'
