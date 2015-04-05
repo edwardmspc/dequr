@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).ancestor(2)
 SECRET_KEY = '$=#j301saw%gz+q@%xk0$4rqsk!b=0hqznd(@ma3t4_)qlunxu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

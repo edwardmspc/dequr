@@ -34,11 +34,16 @@
                                 </a>
                             </li>
                             <li class="mts mrxs hidden-xs">
-
-                                <a href="#"><i class="fa fa-file-text-o mrxxs"></i>Inicia una petición</a>
+                                <a href="#"><i class="fa fa-file-text-o mrxxs"></i>Quejas</a>
                             </li>
                             <li class="mts mrxs hidden-xs">
-                                <a href="#"><i class="fa fa-list-ol mrxxs"></i>Buscar</a>
+                                <a href="#"><i class="fa fa-file-text-o mrxxs"></i>Categorias</a>
+                            </li>
+                            <li class="mts mrxs hidden-xs">
+                                <a href="#"><i class="fa fa-list-ol mrxxs"></i>Para Empresas</a>
+                            </li>
+                            <li class="mts mrxs hidden-xs">
+                                <a href="#"><i class="fa fa-list-ol mrxxs"></i>Para Empresas</a>
                             </li>
                             <li class="mts mrxs hidden-xs hidden-sm">
                                 <form  id="global-search" action="/search">
@@ -55,6 +60,9 @@
                                 <a href="{% url 'user:logout' %}">{{user.first_name}} {{user.last_name}}</a>
                             </li>
                             {% else %}
+                            <li class="mts mrxs hidden-xs">
+                                <a href="{% url 'user:index' %}"><i class="fa fa-user mrxxs"></i>Blog</a>
+                            </li>
                             <li class="mts mrxs hidden-xs">
                                 <a href="{% url 'user:index' %}"><i class="fa fa-user mrxxs"></i>Iniciar sesión</a>
                             </li>
