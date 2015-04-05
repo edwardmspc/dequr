@@ -40,6 +40,7 @@ DJANGO_APP = (
 )
 THIRD_PARTY_APP = (
     'social.apps.django_app.default',
+    'gunicorn',
 )
 
 LOCAL_APP = (
