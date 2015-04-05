@@ -39,9 +39,11 @@ DJANGO_APP = (
     'django.contrib.staticfiles',
 )
 THIRD_PARTY_APP = (
+    'social.apps.django_app.default',
 )
 
 LOCAL_APP = (
+    'apps.users',
 )
 
 INSTALLED_APPS = DJANGO_APP + THIRD_PARTY_APP + LOCAL_APP
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'dequr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.child('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +77,42 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dequr.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
+)
 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1573536116267749'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0160f7f0bbd27956969edc7ed08cbc5e'
+
+SOCIAL_AUTH_TWITTER_KEY = 'Gvs0S9GVgs0dLTIK0gqNgkLAl'
+SOCIAL_AUTH_TWITTER_SECRET = 'DeSXhystfnu8QxZ3iC9si5kMsIjSrTYYHRfYf4Hi39XBZys8B8'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '218181437660-1da1jq9u1momipeufg9rhvk69lqkp4uc.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'KOraASPufazoIhqKrWDhMoMO'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.social_auth.associate_by_email',
+    'apps.users.pipeline.get_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'apps.users.pipeline.user_details',
+)
+
+AUTH_USER_MODEL = 'users.User'
+
+WSGI_APPLICATION = 'dequr.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -112,6 +148,5 @@ else:
     STATICFILES_DIRS = []
 
 STATIC_URL = '/static/'
-TEMPLATE_DIRS = [BASE_DIR.child('templates')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.child('media')

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="True" name="HandheldFriendly">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <title>Home</title>
+
+        {% load static from staticfiles %}
+
+        <link rel="shortcut icon" href="themes/r4/favicon-01.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'assets/css/defaults.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/system.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <div id="header">
+            <div id="header-container">
+                <div class="row">
+                    <div class="col-sm-9 col-xs-6 hide-overflow">
+                        <ul class="navegacion">
+                            <li class="mrs">
+                                <a href="{% url 'general:index' %}" class="logo">
+                                    <img src="https://www.reclamos.cl/themes/r4/logo-reclamos-01.svg" alt="" title="">
+                                </a>
+                            </li>
+                            <li class="mts mrxs hidden-xs">
+
+                                <a href="#"><i class="fa fa-file-text-o mrxxs"></i>Inicia una petición</a>
+                            </li>
+                            <li class="mts mrxs hidden-xs">
+                                <a href="#"><i class="fa fa-list-ol mrxxs"></i>Buscar</a>
+                            </li>
+                            <li class="mts mrxs hidden-xs hidden-sm">
+                                <form  id="global-search" action="/search">
+                                    <label for="filter-by"><i class="fa fa-search"></i></label>
+                                    <input name="q" type="search" placeholder="Buscar">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <ul class="navegacion">
+                            {% if user.is_authenticated %}
+                            <li class="mts mrxs hidden-xs">
+                                <a href="{% url 'user:logout' %}">{{user.first_name}} {{user.last_name}}</a>
+                            </li>
+                            {% else %}
+                            <li class="mts mrxs hidden-xs">
+                                <a href="{% url 'user:index' %}"><i class="fa fa-user mrxxs"></i>Iniciar sesión</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <!-- header-container -->
+        </div>
+
+        {% block content %}{% endblock %}
+
+        <!-- wrappergeneral -->
+        <div class="footer">
+            <div class="footer-inner row">
+                <div class="col-md-12">
+                    <div class="block" id="block-block-2">
+                        <div class="content">
+                            <a rel="license" href="#">Esta <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">obra</span> est&#225; bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.0/cl/">licencia de Creative Commons</a>.<br />
+                            <a href="#">Términos y Condiciones de los servicios y Política de Privacidad</a><br />
+                            Notificar abuso: abuso reclamos.cl<br />
+                            Contacto: admin reclamos.cl<br />
+                            2015 Reclamos.cl
+                        </div>
+                    </div>
+                    Jueves, 26 de Marzo, 2015
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('a[href="#"]').click(function(event) {
+                    event.preventDefault();
+                });
+            });
+        </script>
+
+    </body>
+</html>

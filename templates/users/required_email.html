@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+<div class="container">
+    
+    <div class="row">
+        <div class="box-sm bg-brighter paxxl col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <h3 class="txt-c mtn mbxl">Ingresa un email para terminar el registro con twitter</h3>
+            <div class="components-login">
+                <div class="swap-view">
+                    <form class="login" id="login" action="" method="post">{% csrf_token %}
+                        <div class="grouped-form">
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="email" name="email" autocorrect="off" autocapitalize="off" placeholder="Correo electrónico">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group mtm mbn txt-c">
+                            <div class="control">
+                                <input value="Terminar registro" type="submit" class="btn-Red btn">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <hr class="visible-xs mtn mbxl">
+    </div>
+</div>
+{% endblock %}

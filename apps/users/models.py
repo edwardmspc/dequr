@@ -47,11 +47,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.first_name
 
-    def encoded_username(self):
-        import base64
-        return base64.b64encode(str(self.username))
-
-    def decode_username(self, username):
-        import base64
-        return base64.b64decode(username)
 
