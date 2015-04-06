@@ -7,9 +7,21 @@ h1 {font-family:"ralewayextrabold";}
 h2 {font-family:"ralewaymedium";}
 h2.reclamo-teaser-title a {font-family:"ralewaymedium";color:#ff2935;font-size:22px;}
 html.js fieldset, html.js fieldset.collapsed {margin-bottom:20px;}
-.footer {background:#58c6e8;color:#ffffff;clear:both;margin-top:60px;}
-.footer a {font-weight:bold;color:#ffffff;}
-.footer-inner {max-width:1200px;margin:0 auto;padding:30px 0px 50px 20px;}
+.footer {background:#333 url(http://www.gainesvilleconnect.com/images/footer-patterns/footer-pattern-03.png);
+    color:#ffffff;clear:both;margin-top:60px;}
+.footer a {font-weight:bold;}
+.footer-inner {max-width:850px;margin:0 auto;padding:30px 0px 50px 20px;}
+.footer ul{
+    list-style: none;
+    padding-left: 0;
+}
+.footer li{
+}
+.footer h3{
+    color: #eee;
+}
+.footer li a{
+}
 
 /* Contenidos Moviles */
 #buscador-movil {display:none;}
