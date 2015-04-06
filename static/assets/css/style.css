@@ -340,6 +340,7 @@ border-radius: 5px;}
 }
 #global-search {
     position: relative;
+    margin: 20px 0;
 }
 #global-search label {
     position: absolute;
@@ -351,7 +352,7 @@ border-radius: 5px;}
     padding: 9px 10px 8px 30px;
     width: 100%;
     line-height: 1.40001;
-    border: solid 1px #DF0F17;
+    border: solid 1px #ccc;
     border-radius: 4px;
     color: #191d1d;
     -webkit-transition: border .2s ease-out;
@@ -367,13 +368,14 @@ border-radius: 5px;}
     -o-transition: all 2s;
 }
 #global-search input:focus {
-    width: 150%;
+    /*width: 150%;*/
+    border: solid 1px #DF0F17;
 }
 
 #entrada {
     background: #fff center / cover no-repeat;
-    padding-top: 60px!important;
-    padding-bottom: 60px!important;
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
     background-image: url(https://d22r54gnmuhwmk.cloudfront.net/rendr-fe/img/illustration-world-map-ea23e390.gif);
 }
 .btn{
