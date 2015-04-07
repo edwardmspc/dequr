@@ -118,7 +118,7 @@
                             </a>
                         </article>
                     </div>
-                    
+
                     <div class="col-sm-4">
                         <article class="post">
                             <a href="https://platzi.com/blog/knowledge-graph-y-la-web-semantica/" title="Knowledge Graph y la Web Semántica">
@@ -203,6 +203,10 @@
                 $('a[href="#"]').click(function(event) {
                     event.preventDefault();
                 });
+
+                $(function () {
+                  $('[data-toggle="tooltip"]').tooltip()
+                })
             });
         </script>
 
