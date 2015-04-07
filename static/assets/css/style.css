@@ -656,3 +656,12 @@ small, .type-small {
 .complaint-box ol.list .item-box a:hover {
   text-decoration: none;
 }
+
+.avatar {
+    width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  margin-right: 10px;
+}
