@@ -665,3 +665,44 @@ small, .type-small {
   -webkit-border-radius: 50px;
   margin-right: 10px;
 }
+
+.post {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  padding: 0;
+  vertical-align: top;
+  width: 320px;
+}
+
+.post a {
+  color: #515151;
+  text-decoration: none;
+}
+
+.post .post-picture-container {
+  height: 214px;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+.post .post-picture-container img {
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+.post .post-title {
+  border-bottom: 1px solid #b7b7b7;
+  color: #515151;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+  padding: 10px 0 20px 0;
+}
+.post .post-date {
+  font-family: 'Quicksand',sans-serif;
+  font-size: 0.9em;
+  margin: 10px 0;
+}
