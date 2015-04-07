@@ -3,6 +3,15 @@
 
 
 {% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=731623136870740&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="entrada">
     <div class="container">
         <div class="row">
@@ -93,8 +102,9 @@
             <!-- main -->
 
             <div id="sidebar-left"  class="col-md-4">
-                <div id="ads-300-250" class="txt-c">
+                <div id="ads-300-250" class="txt-c mbm">
                     <img src="http://1.bp.blogspot.com/-di0CNCwcQkA/U3NBY00DW3I/AAAAAAAAEDU/VX6tZ94GBbM/s1600/300x250.png" width="300" height="250">
+                    <div style="clear: both;"></div>
                 </div>
 
                 <div class="complaint-box">
@@ -143,7 +153,7 @@
                     </div>
                 </div>
 
-                <div class="block" id="block-elementos-6">
+                <div class="complaint-box">
                     <div class="content">
                         <div class="resumen-container">
                             <div class="resumen nprincipal">59.467</div>
@@ -157,7 +167,58 @@
                             <div class="resumen nprincipal">6.093</div>
                             <div class="resumen detalle">comentarios realizados por usuarios, <br /><strong>24 esta semana.</strong></div>
                         </div>
-                        <div class="clear"></div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+
+
+                <div class="complaint-box">
+                    <div class="fb-page" data-href="https://www.facebook.com/dequrcom" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+                </div>
+
+                <div class="complaint-box">
+                    <div class="content">
+                        <div class="resumen-container">
+                        <h3>
+                            <a href="#">Top Consumidores</a>
+                            <span>Consumidores con el mayor número de quejas del mes</span>
+                        </h3>
+                        <ol class="list">
+                            <li class="item-box">
+                                <a href="#">
+                                    <span class="ordinal">1</span>
+                                    <p class="content">Avas Flowers</p>
+                                </a>
+                            </li>
+
+                            <li class="item-box">
+                                <a href="#">
+                                    <span class="ordinal">2</span>
+                                    <p class="content">Walmart</p>
+                                </a>
+                            </li>
+
+                            <li class="item-box">
+                                <a href="#">
+                                    <span class="ordinal">3</span>
+                                    <p class="content">Ups</p>
+                                </a>
+                            </li>
+
+                            <li class="item-box">
+                                <a href="#">
+                                    <span class="ordinal">4</span>
+                                    <p class="content">Att</p>
+                                </a>
+                            </li>
+                            <li class="item-box">
+                                <a href="#">
+                                    <span class="ordinal">5</span>
+                                    <p class="content">Stemologica</p>
+                                </a>
+                            </li>
+                        </ol>
+                        </div>
                     </div>
                 </div>
 
