@@ -352,10 +352,11 @@ border-radius: 10px;}
 
 .navegacion {
     list-style: none;
+    margin-bottom: 0;
 }
 .navegacion li {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
 }
 .navegacion li a{
     color: #fff;
