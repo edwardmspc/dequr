@@ -43,6 +43,8 @@ THIRD_PARTY_APP = (
 )
 
 LOCAL_APP = (
+    'apps.complaint',
+    'apps.general',
     'apps.users',
 )
 

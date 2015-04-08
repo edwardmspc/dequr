@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+<div id="wrapgeneral" style="margin-top: 20px;">
+    <div class="container">
+        <div class="row">
+            <div id="main" class="col-md-8">
+                <div class="breadcrumb"><a href="https://www.reclamos.cl/">Inicio</a> » <a href="https://www.reclamos.cl/telecomunicaciones">-Telecomunicaciones</a> » <a href="https://www.reclamos.cl/empresa/vtr">VTR</a></div>
+                <div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review">
+                    <h2 class="reclamo-subtitulo"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://www.reclamos.cl/empresa/restaurant">Mamut Restaurant</a></h2>
+                    <h1 class='reclamo-front-title'>Mamut restaurant - Procedimiento engañoso</h1>
+                    <div class="node full ">
+                        <div class="node-info">
+                            <span property="v:dtreviewed" content="2015-03-24">Martes 24, Marzo 2015</span>, N&uacute;mero de Reclamo: 320041       <span property="v:reviewer" class="rdf">Foro Reclamos.cl</span>
+                        </div>
+                        <div class="node-content">
+                            <span property="v:description">
+                                <p>Hola buenas, vivo en av. Pacífico en 4 esquinas en la serena y vivo hace 1 año acá y he gastado muchísimo dinero por un módem inalámbrico que no me ayuda para nada cuando lo necesito, me tengo que conectar como a las 1 de la mañana para que pueda andar mejor el internet, ya se hace necesario el internet fijo por estos lados y varias personas en el departamento en donde vivo nos pasa lo mismo, necesitamos el cableado de internet por que ya es de mucha necesidad </p>
+                                <p>Ojalas nos den respuestas prontas y que sean buenas para nuestras necesidades, gracias de ante mano .!</p>
+                            </span>
+                            <div class="img-center"></div>
+                            <div class="reclamo-meta-autor">Publicado por: IP 181.202.9.230 el Martes, Marzo 24, 2015 - 22:37. La persona que public&oacute; este contenido se ha identificado internamente con su nombre, rut y otros datos aportados voluntariamente. Para tomar contacto con el autor considere las alternativas que se presentan a la derecha del contenido. Las opiniones publicadas por los usuarios del foro no reflejan necesariamente la opini&oacute;n de los administradores de Reclamos.cl.</div>
+                        </div>
+                        <div class="reclamos-comments">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Close rdf div -->
+            </div>
+            <!-- -->
+            <div id="sidebar-left"  class="col-md-4">
+
+                <div class="block" id="block-simplenews-newsletter-1970">
+                    <h2 class="title mtn">Reclamos.cl newsletter</h2>
+                    <div class="content">
+                        <p>Manténgase informado de reclamos frecuentes recibiendo alertas en su email.</p>
+                        <form action="https://www.reclamos.cl/vtr/reclamo/2015/mar/vtr_cableado_internet_fijo"  accept-charset="UTF-8" method="post" id="simplenews-block-form">
+                            <div>
+                                <div class="form-item">
+                                    <label for="edit-mail">Correo-e: <span class="form-required" title="Este campo es obligatorio.">*</span></label>
+                                    <input type="text" maxlength="128" name="mail" id="edit-mail"  size="20" value="" class="form-text required" />
+                                </div>
+                                <div class="form-radios">
+                                    <div class="form-item">
+                                        <label class="option"><input type="radio" name="action" value="subscribe"  checked="checked"  class="form-radio" /> Suscribirse</label>
+                                    </div>
+                                    <div class="form-item">
+                                        <label class="option"><input type="radio" name="action" value="unsubscribe"   class="form-radio" /> Desuscribirse</label>
+                                    </div>
+                                </div>
+                                <input type="submit" name="op" id="edit-submit" value="Publicar"  class="form-submit" />
+                                <input type="hidden" name="form_id" id="edit-simplenews-block-form" value="simplenews_block_form"  />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+    <!-- Container -->
+</div>
+{% endblock %}
