@@ -785,8 +785,11 @@ small, .type-small {
     border-radius: 3px;
     font-weight: bold;
     padding: 5px 7px;
-    margin: 0 10px;
+    margin-left: 10px;
     vertical-align: top;
+}
+.node-single-end ul li:first-child{
+    margin-left: 0px;
 }
 .node-single-end ul li > a:hover{
   text-decoration: none;
