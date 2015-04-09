@@ -837,5 +837,5 @@ small, .type-small {
   color: #058f00;
 }
 .btn-complaint {
-    font-size: 18px;
+    font-size: 18px!important;
 }
