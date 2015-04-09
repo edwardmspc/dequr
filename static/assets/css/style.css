@@ -3,9 +3,9 @@ a {color:#ff2935;text-decoration:none;}
 p {margin:10px 0px 20px 0px;}
 #logo-reclamos {margin:20px 0px 0px 20px;}
 #logo-reclamos {display:block;}
-h1 {font-family:"ralewayextrabold";}
+/*h1 {font-family:"ralewayextrabold";}
 h2 {font-family:"ralewaymedium";}
-h2.reclamo-teaser-title a {font-family:"ralewaymedium";color:#ff2935;font-size:22px;}
+h2.reclamo-teaser-title a {font-family:"ralewaymedium";color:#ff2935;font-size:22px;}*/
 html.js fieldset, html.js fieldset.collapsed {margin-bottom:20px;}
 .footer {background:#eee url(http://www.gainesvilleconnect.com/images/footer-patterns/footer-pattern-03.png);
     color:#ffffff;clear:both;margin-top:60px;}
@@ -238,7 +238,7 @@ border-radius: 10px;}
 .compara-share {margin-top:10px;}
 .compara-llamado {font-size:18px;margin-top:15px;}
 .compara-marca a  {
-  font-family:"ralewayextrabold";
+  /*font-family:"ralewayextrabold";*/
   font-size:32px;
   margin:0 auto;
   display:block;
@@ -257,7 +257,7 @@ border-radius: 10px;}
 .reclamo-contactado {font-size:10px;margin-top:10px;text-align:left;}
 .reclamo-contactado ul {margin:10px 0px 10px 20px;padding:0px;}
 #node-visitas {text-align: center;}
-#node-visitas-counter {font-family:"ralewayextrabold";letter-spacing: -2px;font-size:48px;}
+#node-visitas-counter {/*font-family:"ralewayextrabold";*/letter-spacing: -2px;font-size:48px;}
 #node-share {clear:both;}
 #node-visitas-texto {font-size:11px;margin-bottom:5px;}
 .node .links {text-align:right;font-size:11px;}
@@ -732,4 +732,33 @@ small, .type-small {
   font-family: 'Quicksand',sans-serif;
   font-size: 0.9em;
   margin: 10px 0;
+}
+.single_header h1{
+    font-size: 26px;
+  
+}
+.single_header .reviews{
+  font-size: 20px;
+}
+.single_header .sub{
+  margin:20px 0;
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
+  border-width: 1px 0;
+  padding: 10px; 
+}
+.single_header .sub ul{
+    list-style: none;
+
+}
+.single_header .sub ul li {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 16px;
+}
+.single_header .sub ul.big-li li {
+    font-size: 18px;
+}
+.single_header .sub ul li a {
+
 }
