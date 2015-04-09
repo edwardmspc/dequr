@@ -735,7 +735,10 @@ small, .type-small {
 }
 .single_header h1{
     font-size: 26px;
-  
+    margin: 0;
+}
+.single_header .top{
+  margin: 30px 0;
 }
 .single_header .reviews{
   font-size: 20px;
@@ -745,11 +748,11 @@ small, .type-small {
   background: #fafafa;
   border: 1px solid #d9d9d9;
   border-width: 1px 0;
-  padding: 10px; 
+  padding: 10px 0; 
 }
 .single_header .sub ul{
     list-style: none;
-
+    padding-left: 0;
 }
 .single_header .sub ul li {
     display: inline-block;
@@ -761,4 +764,71 @@ small, .type-small {
 }
 .single_header .sub ul li a {
 
+}
+.node-single-end {
+    background: #f0f0f0;
+    padding: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.node-single-end ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.node-single-end ul li{
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 7px;
+    margin: 0 10px;
+    vertical-align: top;
+}
+.node-single-end ul li > a:hover{
+  text-decoration: none;
+}
+.node-single-end ul li.nm-holder span{
+    display: inline-block;
+}
+.node-single-end ul li.nm-holder span.votes-count-num{
+    background: #e5e5e5;
+    -moz-border-radius: 3px;    
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin-right: 5px;
+    padding: 0 5px;
+    color: #333;
+}
+.node-single-end ul li.report{
+    float: right;
+    background: none;
+    border: none;
+}
+.node-single-end ul li.report a{
+    color: #999;
+}
+.node-single-end ul li.report a:hover{
+    color: #ff2935;
+}
+.node-single-end ul li.vote-holder span{
+    display: inline-block;
+}
+.node-single-end ul li.vote-holder span a:hover{
+  text-decoration: none;
+}
+.node-single-end ul li.vote-holder .downvote {
+  margin: 0 0 0 5px;
+}
+.node-single-end ul li.vote-holder .upvote {
+  margin: 0 5px 0 0;
+}
+.node-single-end ul li.vote-holder .downvote a{
+  color: #d33128;
+}
+.node-single-end ul li.vote-holder .upvote a{
+  color: #058f00;
 }
