@@ -424,6 +424,7 @@ border-radius: 10px;}
     -webkit-box-shadow: inset 0 -2px rgba(0,0,0,0.3);
     box-shadow: inset 0 -2px rgba(0,0,0,0.3);
 }
+
 .btn.focus, .btn:focus {
     color: #fff;
 
@@ -834,4 +835,7 @@ small, .type-small {
 }
 .node-single-end ul li.vote-holder .upvote a{
   color: #058f00;
+}
+.btn-complaint {
+    font-size: 18px;
 }
