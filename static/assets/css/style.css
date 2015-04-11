@@ -588,8 +588,8 @@ textarea, input[type=text], select {
   -o-transition: border .2s ease-out;
   transition: border .2s ease-out;
   line-height: normal;
-  -webkit-appearance: none;
   display: block;
+  background-color: #fff;
 }
 
 textarea:focus, textarea:active, input[type=text]:focus, input[type=text]:active, select:focus, select:active {
