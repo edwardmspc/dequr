@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=731623136870740&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapgeneral">
+    <div class="container">
+        <div class="row">
+            <div class="post_header col-md-12">
+                <div class="row">
+                    <div class="top col-md-8">
+                        
+                        <h2 class="mtm mbn">Club Social needs additional information in order to contact you.</h2>
+                        <p class="hint mtxs mbm">This will not be publicly shared</p>
+
+                    </div>
+                </div>
+
+            </div>
+        
+            <div id="main" class="col-md-8">
+                <div class="form-page">
+                    <ul>
+                        <li>
+                            <label>Full Name</label>
+                            <input type="text" placeholder="" />
+                        </li>
+                        <li>
+                            <label>Your Email</label>
+                            <input type="text" placeholder="" />
+                        </li>
+                        <li>
+                            <label>Personal Phone</label>
+                            <input type="text" placeholder="" />
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- -->
+            <div id="sidebar-left"  class="col-md-4">
+
+                <div class="complaint-box">
+                </div>
+
+
+            </div>
+            <!-- sidebar-left -->
+
+
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container -->
+</div>
+{% endblock %}

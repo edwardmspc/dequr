@@ -9,3 +9,7 @@ class IndexView(View):
 class PostView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'complaint/post_page.html')
+
+class StepOneView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/step_one.html')
