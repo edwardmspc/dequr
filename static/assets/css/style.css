@@ -607,6 +607,9 @@ textarea:focus, textarea:active, input[type=text]:focus, input[type=text]:active
 .mbm {
   margin-bottom: 20px!important;
 }
+.mlm {
+  margin-left: 30px!important;
+}
 .mtm {
   margin-top: 20px!important;
 }
@@ -899,10 +902,13 @@ small, .type-small {
 .form-page li{
   margin-bottom: 20px;
 }
-
 .hint {
   color: #999;
 }
+.rint {
+  color: #ff2935;
+}
+
 span.hint {
   display: inline!important;
 }
@@ -949,4 +955,19 @@ span.hint {
   border: 2px solid #345095;
   color: #345095;
   text-decoration: none;
+}
+.frame {
+  background: #fafafa;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3) inset;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding:10px;
+  width: 50%;
+  margin-bottom: 20px;
+}
+.frame .icon {
+    font-size: 80px;
+    margin-top: 20px;
 }

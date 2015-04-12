@@ -13,3 +13,7 @@ class PostView(View):
 class StepOneView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'complaint/step_one.html')
+
+class StepTwoView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/step_two.html')
