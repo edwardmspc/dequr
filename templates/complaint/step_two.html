@@ -27,38 +27,105 @@
             </div>
         
             <div id="main" class="col-md-8">
-                <div class="form-page">
-                    <ul>
-                    <div class="frame">
-                        <li class="txt-c">
-                            <i class="fa fa-frown-o icon"></i>
-                        </li>
-                        <li>
-                            <input value="pc_service" type="radio" name="">
-                            <label>Que me proponga una solución</label>
-                        </li>
-                        <li>
-                            <input value="pc_service" type="radio" name="">
-                            <label>La devolución de mi Dinero</label>
-                        </li>
-                        <li>
-                            <input value="pc_service" type="radio" name="">
-                            <label>Que entregue mi producto</label>
-                        </li>
-                        <li>
-                            <input value="pc_service" type="radio" name="">
-                            <label>Otra solución</label>
-                            <input type="text" placeholder="" />
-                        </li>
+                <div class="row">
+                    <div class="form-page col-md-12">
+                        <ul class="capabilities">
+                            <li>
+                            <i class="fa fa-check-square-o icon"></i>
+                            <strong>Mark review as "resolved"</strong>once you are satisfied with company's solution.</li>
+                            <li>
+                            <i class="fa fa-check-square-o icon"></i>
+                            <strong>Update review</strong>to keep your readers posted.</li>
+                            <li>
+                            <i class="fa fa-check-square-o icon"></i>
+                            <strong>Get email notifications</strong>about new comments to your review.</li>
+                        </ul>
                     </div>
-                        <li>
-                            <a href="#" class="btn btn-go btn-complaint">
-                                <span class="txt">Enviar denuncia</span>
-                            </a> <a class="mlm" href="#">Omitir</a>
-                        </li>
-                        
-                    </ul>
                 </div>
+
+                <div class="row">
+        <div class="col-md-9 mtm">
+
+            <div class="text-bar mvm text-bar-center">
+                        <span class="text">o</span>
+                    </div>
+
+
+                <div class="txt-c">
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-fb">
+                        <span class="txt"><i class="fa fa-facebook mrxxs"></i>Ingresar con Facebook</span>
+                    </a>
+
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-tw">
+                        <span class="txt"><i class="fa fa-twitter mrxxs"></i>Ingresar con Twitter</span>
+                    </a>
+
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-go">
+                        <span class="txt"><i class="fa fa-google mrxxs"></i>Ingresar con Google</span>
+                    </a>
+                </div>
+
+                    <div class="text-bar mvm text-bar-center">
+                        <span class="text">o</span>
+                    </div>
+
+
+                    <form method="post" class="login" id="register">
+                        <div class="grouped-form">
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="text" name="name" autocorrect="off" autocapitalize="off" placeholder="Nombre">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="text" name="lastname" autocorrect="off" autocapitalize="off" placeholder="Apellido">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="email" name="email" autocorrect="off" autocapitalize="off" placeholder="Correo electrónico">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="password" name="password" placeholder="Contraseña">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="control">
+                                    <span class="input bg-brighter">
+                                        <input type="password" name="password" placeholder="Confirmación">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group mtm mbn">
+                            <div class="control">
+                                <input value="Regístrate" type="submit" class="btn-full btn-Red btn btn-big">
+                            </div>
+                        </div>
+                    </form>
+                <p class="mts txt-c type-smaller type-muted">
+                Sumándote o ingresando via Facebook, Twitter o Google+, aceptas los <a href="#">términos y condiciones</a> y las <a href="#">reglas de uso</a> de Dequr.com y aceptas recibir mensajes de correo electrónico ocasionalmente sobre campañas en Dequr.com.
+        </div>
+        <hr class="visible-xs mtn mbxl">
+    </div>
+
+
             </div>
             <!-- -->
             <div id="sidebar-left"  class="col-md-4">
