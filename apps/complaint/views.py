@@ -17,3 +17,11 @@ class StepOneView(View):
 class StepTwoView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'complaint/step_two.html')
+
+class CategoryView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/category.html')
+
+class ProfileView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/profile.html')
