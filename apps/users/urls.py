@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^setting/$', SettingView.as_view(), name='setting'),
     url(r'^my_comments/$', MyCommentsView.as_view(), name='my_comments'),
     url(r'^my_complaints/$', MyComplaintView.as_view(), name='my_complaints'),
+    
 ]
