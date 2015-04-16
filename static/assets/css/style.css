@@ -1103,3 +1103,25 @@ ul.list-cat {
     font-size: 12px;
     margin-top: 5px
 }
+.setting {
+    width: 484px;
+    text-align: left;
+}
+.setting li{
+    display: inline-block;
+    vertical-align: top;
+}
+.setting li.tag{
+    width: 111px;
+    text-align: right;
+    color: #999;
+}
+.setting li.value{
+}
+.avatarp {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;
+}

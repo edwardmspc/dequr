@@ -3,6 +3,10 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 
 
+class SettingView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'users/setting.html')
+
 class LoginIndex(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'users/login-register-social.html')

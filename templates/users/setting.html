@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=731623136870740&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapgeneral">
+    <div class="container">
+        <div class="row">
+            <div class="single_header txt-c col-md-12">
+                <div class="top">
+                    <h1>edward.mspc</h1>
+                    <ul class="list mts">
+                        <li><a href="#">Mis Quejas</a></li>
+                        <li><a href="#">Mis Comentarios</a></li>
+                        <li><a class="active" href="#">Mi Cuenta</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="sub profile">
+                    <div class="row txt-c">
+                        <div class="col-md-2 col-md-offset-3">
+                            <img alt="" src="http://www.pissedconsumer.com/themes/foundation/images/avatar_placeholder-128x128.png" class="avatarp" itemprop="logo">
+                        </div>
+                        <div class="col-md-3">
+                        
+                           <ul class="setting">
+                               <div class="row">
+                                   <li class="tag">Joined</li>
+                                   <li class="value">April 13, 2015</li>
+                               </div>
+
+                               <div class="row">
+                                   <li class="tag">Last Seen</li>
+                                   <li class="value">April 15, 2015</li>
+                               </div>
+
+                               <div class="row">
+                                   <li class="tag">Email</li>
+                                   <li class="value">edward.mspc@gmail.com <a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                               </div>
+
+                               <div class="row">
+                                   <li class="tag">Password</li>
+                                   <li class="value">********* <a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                               </div>
+
+                               <div class="row">
+                                   <li class="tag">Location</li>
+                                   <li class="value">Caracas, Capital District <a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                               </div>
+                           </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        
+            <div id="main" class="col-md-8">
+               
+            </div>
+            <!-- -->
+            <div id="sidebar-left"  class="col-md-4">
+
+                <div id="ads-300-250" class="txt-c mbm">
+                    <img src="http://1.bp.blogspot.com/-di0CNCwcQkA/U3NBY00DW3I/AAAAAAAAEDU/VX6tZ94GBbM/s1600/300x250.png" width="300" height="250">
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div class="complaint-box">
+                    <div class="fb-page" data-href="https://www.facebook.com/dequrcom" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+                </div>
+
+            </div>
+            <!-- sidebar-left -->
+
+
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container -->
+</div>
+{% endblock %}
