@@ -7,6 +7,14 @@ class SettingView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'users/setting.html')
 
+class MyCommentsView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'users/my_comments.html')    
+
+class MyComplaintView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'users/my_complaints.html')                
+
 class LoginIndex(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'users/login-register-social.html')
