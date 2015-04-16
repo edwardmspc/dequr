@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from .views import LoginIndex, LogoutView, RequiredEmailView, SettingView, MyCommentsView, MyComplaintView
+from .views import LoginIndex, LogoutView, RequiredEmailView, SettingView,SettingBissView, MyCommentsView, MyComplaintView
 
 
 urlpatterns = [
@@ -8,7 +8,8 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
 
     url(r'^setting/$', SettingView.as_view(), name='setting'),
+    url(r'^setting_biss/$', SettingBissView.as_view(), name='setting_biss'),
     url(r'^my_comments/$', MyCommentsView.as_view(), name='my_comments'),
     url(r'^my_complaints/$', MyComplaintView.as_view(), name='my_complaints'),
-    
+
 ]

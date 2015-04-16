@@ -7,6 +7,10 @@ class SettingView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'users/setting.html')
 
+class SettingBissView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'users/setting_biss.html')
+
 class MyCommentsView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'users/my_comments.html')    
