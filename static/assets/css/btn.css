@@ -1,0 +1,254 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800");
+.btn {
+  font-family: 'Open Sans',sans-serif;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+  font-size: 18px;
+  line-height: 37px;
+  -webkit-transition-property: background-color;
+  -webkit-transition-duration: 0.2s;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-property: background-color;
+  -moz-transition-duration: 0.2s;
+  -moz-transition-timing-function: linear;
+  -ms-transition-property: background-color;
+  -ms-transition-duration: 0.2s;
+  -ms-transition-timing-function: linear;
+  -o-transition-property: background-color;
+  -o-transition-duration: 0.2s;
+  -o-transition-timing-function: linear;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  background: #fafafa;
+  color: #222222;
+}
+.btn i {
+  line-height: 37px;
+}
+.btn:active,
+.btn:active i {
+  line-height: 40px;
+}
+/*btn colores*/
+.btn:hover,
+.btn:focus {
+  background: #e6e6e6;
+  color: #222222;
+}
+.btn.btn-primary {
+  background: #0088cc;
+  color: #fafafa;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background: #006da3;
+  color: #fafafa;
+}
+.btn.btn-info {
+  background: #49afcd;
+  color: #fafafa;
+}
+.btn.btn-info:hover,
+.btn.btn-info:focus {
+  background: #339bba;
+  color: #fafafa;
+}
+.btn.btn-success {
+  background: #5bb75b;
+  color: #fafafa;
+}
+.btn.btn-success:hover,
+.btn.btn-success:focus {
+  background: #47a247;
+  color: #fafafa;
+}
+.btn.btn-warning {
+  background: #faa732;
+  color: #fafafa;
+}
+.btn.btn-warning:hover,
+.btn.btn-warning:focus {
+  background: #f9960a;
+  color: #fafafa;
+}
+.btn.btn-danger {
+  background: #da4f49;
+  color: #fafafa;
+}
+.btn.btn-danger:hover,
+.btn.btn-danger:focus {
+  background: #d0312a;
+  color: #fafafa;
+}
+.btn.btn-inverse {
+  background: #363636;
+  color: #fafafa;
+}
+.btn.btn-inverse:hover,
+.btn.btn-inverse:focus {
+  background: #222222;
+  color: #fafafa;
+}
+/*end btn colores*/
+.btn span {
+  pointer-events: none;
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn:focus {
+  text-decoration: none;
+  outline: none;
+}
+.btn:active {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.btn:active:focus {
+  text-decoration: none;
+  outline: none;
+}
+.btn-small {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  line-height: 28px;
+}
+.btn-small i {
+  line-height: 28px;
+}
+.btn-small:active,
+.btn-small:active i {
+  line-height: 30px;
+}
+.btn-large {
+  height: 50px;
+  padding: 0 18px;
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.15);
+  font-size: 22px;
+  line-height: 46px;
+}
+.btn-large i {
+  line-height: 46px;
+}
+.btn-large:active,
+.btn-large:active i {
+  line-height: 50px;
+}
+.btn-xlarge {
+  height: 60px;
+  padding: 0 22px;
+  border-radius: 7px;
+  -webkit-box-shadow: inset 0 -5px 0 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -5px 0 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -5px 0 0 rgba(0, 0, 0, 0.15);
+  font-size: 26px;
+  line-height: 55px;
+}
+.btn-xlarge i {
+  line-height: 55px;
+}
+.btn-xlarge:active,
+.btn-xlarge:active i {
+  line-height: 60px;
+}
+.btn-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+/*.btn{
+    color: #fff;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -2px rgba(0,0,0,0.3);
+    box-shadow: inset 0 -2px rgba(0,0,0,0.3);
+}
+
+.btn.focus, .btn:focus {
+    color: #fff;
+
+}
+
+.btn-big {
+    font-size: 23px!important;
+}
+.btn-Red {
+    background-color: #ef363d;
+    text-shadow: 0 -1px 0 #b71810;
+}
+.btn-fb, .btn-fb:active {
+    font-size: 14px!important;
+    background-color: #2b4170; 
+    background: -moz-linear-gradient(top, #3b5998, #2b4170);
+    background: -ms-linear-gradient(top, #3b5998, #2b4170);
+    background: -webkit-linear-gradient(top, #3b5998, #2b4170);
+    border: solid 1px #283e6b;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.4);
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.3s;
+}
+.btn-tw, .btn-tw:active {
+    font-size: 14px!important;
+    background-color: #0081ce; 
+    background: -moz-linear-gradient(top, #00aced, #0081ce);
+    background: -ms-linear-gradient(top, #00aced, #0081ce);
+    background: -webkit-linear-gradient(top, #00aced, #0081ce);
+    border: 1px solid #0081ce;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.4);
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.3s;
+}
+.btn-go, .btn-go:active {
+    font-size: 14px!important;
+    background-color: #c33219; 
+    background: -moz-linear-gradient(top, #e64522, #c33219);
+    background: -ms-linear-gradient(top, #e64522, #c33219);
+    background: -webkit-linear-gradient(top, #e64522, #c33219);
+    border: 1px solid #c33219;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.4);
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.3s;
+}
+.btn-go:hover, .btn-tw:hover, .btn-fb:hover, .btn-Red:hover {
+    color: #fff!important;
+}
+
+.bg-brighter {
+    background: #fff;
+}
+.btn-full {
+  width: 100%;
+}
+.btn-complaint {
+    font-size: 18px!important;
+}*/

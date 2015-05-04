@@ -1,0 +1,40 @@
+
+        i=0
+        for form in form_list:
+            # Intanciamos depende del paso
+            if i==0:
+                try:
+                    if form.cleaned_data["company_val"]:
+                        company = Company.objects.get(id=form.cleaned_data["company_val"])
+                    else:
+                        company = Company.objects.get(name__icontains=form.cleaned_data["company"])
+                except Company.DoesNotExist:
+                    company = Company(name=form.cleaned_data["company"], category=form.cleaned_data["category"],)
+                    company.save()
+
+                # Rellenamos la instanc
+                complaint = Complaint(title=form.cleaned_data["title"],
+                                        description=form.cleaned_data["description"],
+                                        company=company,
+                                        category=form.cleaned_data["category"],
+                                        subcategory=form.cleaned_data["subcategory"],
+                                        )
+
+                # Guardamos la instancia
+                complaint.save()
+            elif i==1:
+                complaint_contact = ComplaintContact(complaint=complaint,
+                                                        complete_name=form.cleaned_data["complete_name"],
+                                                        email=form.cleaned_data["email"],
+                                                        cellphone=form.cleaned_data["cellphone"],)
+                complaint_location = ComplaintLocation(complaint=complaint,
+                                                        place=form.cleaned_data["place"],
+                                                        product_or_service=form.cleaned_data["product_or_service"],
+                                                        other_solution=form.cleaned_data["other_solution"],)
+                complaint_request = ComplaintRequest(complaint=complaint, actions_radio=form.cleaned_data["actions_radio"],)
+                
+                # Guardamos la instancia
+                complaint_contact.save()
+                complaint_location.save()
+                complaint_request.save()
+            i=i+1

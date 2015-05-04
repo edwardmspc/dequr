@@ -12,15 +12,15 @@
                 <div class="swap-view" data-view="components/swap-view" data-templatename="components/login_or_join/log_in" data-ispartial="true" data-render="true">
 
                 <div class="txt-c">
-                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-fb btn-full mbxs">
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-inline btn-primary mbxs">
                         <span class="txt"><i class="fa fa-facebook mrxxs"></i>Ingresar con Facebook</span>
                     </a>
 
-                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-tw btn-full mbxs">
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-inline btn-primary mbxs">
                         <span class="txt"><i class="fa fa-twitter mrxxs"></i>Ingresar con Twitter</span>
                     </a>
 
-                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-go btn-full mbxs">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-inline btn-primary mbxs">
                         <span class="txt"><i class="fa fa-google mrxxs"></i>Ingresar con Google</span>
                     </a>
                 </div>
@@ -56,12 +56,14 @@
                     });
                     </script>
 
-                    <form method="post" class="login" id="login">
+                    <form method="post" class="login" id="login">{% csrf_token %}
+                        {{login_form.form}}
                         <div class="grouped-form">
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="email" name="email" autocorrect="off" autocapitalize="off" placeholder="Username">
+                                        {{login_form.username}}
+                                        <span class="has-error">{{login_form.username.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -69,11 +71,14 @@
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="password" name="password" placeholder="Contraseña">
+                                        {{login_form.password}}
+                                        <span class="has-error">{{login_form.password.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
-
+                            {% if login_error %}
+                                <span class="has-error">{{login_error}}</span>
+                            {% endif %}
                         </div>
 
                         <div class="mtxs type-small txt-r">
@@ -82,7 +87,7 @@
 
                         <div class="control-group mtm mbn">
                             <div class="control">
-                                <input value="Iniciar sesión" type="submit" class="btn-full btn-Red btn btn-big">
+                                <input value="Iniciar sesión" type="submit" class="btn btn-inline btn-inverse">
                                 <div class="mtl type-small txt-c">
                                     <span>¿No tienes una cuenta?&nbsp;</span><a href="#register">Regístrate</a>
                                 </div>
@@ -90,12 +95,14 @@
                         </div>
                     </form>
 
-                    <form method="post" class="login" id="register">
+                    <form method="post" class="login" id="register">{% csrf_token %}
+                        {{register_form.form}}
                         <div class="grouped-form">
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="text" name="name" autocorrect="off" autocapitalize="off" placeholder="Username">
+                                        {{register_form.username}}
+                                        <span class="has-error">{{register_form.username.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -103,7 +110,8 @@
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="email" name="email" autocorrect="off" autocapitalize="off" placeholder="Correo electrónico">
+                                        {{register_form.email}}
+                                        <span class="has-error">{{register_form.email.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -111,7 +119,8 @@
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="password" name="password" placeholder="Contraseña">
+                                        {{register_form.password1}}
+                                        <span class="has-error">{{register_form.password1.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -119,7 +128,8 @@
                             <div class="control-group">
                                 <div class="control">
                                     <span class="input bg-brighter">
-                                        <input type="password" name="password" placeholder="Confirmación">
+                                        {{register_form.password2}}
+                                        <span class="has-error">{{register_form.password2.errors.as_text}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -127,7 +137,7 @@
 
                         <div class="control-group mtm mbn">
                             <div class="control">
-                                <input value="Regístrate" type="submit" class="btn-full btn-Red btn btn-big">
+                                <input value="Regístrate" type="submit" class="btn btn-inline btn-inverse">
                                 <div class="mtl type-small txt-c">
                                     <span>¿Ya tienes una cuenta? </span><a href="#login">Iniciar sesión</a>
                                 </div>

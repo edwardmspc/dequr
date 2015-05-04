@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+    <meta content="text/html" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,8 +18,10 @@
         <link rel="stylesheet" href="{% static 'assets/css/system.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
-
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -30,7 +33,7 @@
                         <ul class="navegacion">
                             <li class="mrs">
                                 <a href="{% url 'general:index' %}" class="logo">
-                                    <img style="width: 150px;padding: 3px 0;" src="{% static 'assets/img/dequr_solo.png' %}" alt="" title="">
+                                    <img style="width: 180px;padding: 5px 0;" src="{% static 'assets/img/dequr_megafono.png' %}" alt="" title="">
                                 </a>
                             </li>
                             <li class="mrxs hidden-xs">
@@ -54,7 +57,7 @@
                         <ul class="navegacion" style="text-align: right;">
                             <li style="height: 52px;"></li>
                             {% if user.is_authenticated %}
-                            <li class="mts mrxs hidden-xs">
+                            <li class="mrxs hidden-xs">
                                 <a href="{% url 'user:logout' %}">{{user.first_name}} {{user.last_name}}</a>
                             </li>
                             {% else %}
@@ -126,18 +129,12 @@
                 </div>
             </div>
         </div>
+        
+        <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('a[href="#"]').click(function(event) {
-                    event.preventDefault();
-                });
-
-                $(function () {
-                  $('[data-toggle="tooltip"]').tooltip()
-                })
-            });
-        </script>
-
+        <script src="{% static 'assets/js/jquery.geocomplete.min.js' %}"></script>
+        
+        <script src="{% static 'assets/js/script.js' %}"></script>
     </body>
 </html>

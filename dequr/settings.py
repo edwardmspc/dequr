@@ -40,9 +40,11 @@ DJANGO_APP = (
 )
 THIRD_PARTY_APP = (
     'social.apps.django_app.default',
+    'formtools',
 )
 
 LOCAL_APP = (
+    'apps.company',
     'apps.complaint',
     'apps.general',
     'apps.users',
@@ -130,7 +132,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-MX'
 
 TIME_ZONE = 'UTC'
 
@@ -152,3 +154,4 @@ else:
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.child('media')
+

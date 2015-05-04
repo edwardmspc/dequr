@@ -29,33 +29,38 @@
                 </div>
 
             </div>
-        
+
+
             <div id="main" class="col-md-8">
+                <form action=""  method="post">{% csrf_token %}
+                    
+               
                 <div class="form-page">
                     <ul>
                         <li>
-                            <label>Título de tu queja: Describe tu problema en pocas palabras (máximo 130 caracteres). No escribas todo en mayúsculas</label>
-                            <input type="text" placeholder="" />
+                            <label>Título de tu queja: Describe tu problema en pocas palabras (máximo 140 caracteres). No escribas todo en mayúsculas</label>
+                            {{form.title}}
+                            <span class="has-error">{{form.title.errors.as_text}}</span>
                         </li>
                         <li>
                             <label>Que fue exactamente lo que sucedió, entre más detalles ofrezcas más posibilidades de conseguir una solución.</label>
-                            <textarea style="height: 300px;"></textarea>
+                            {{form.description}}
+                            <span class="has-error">{{form.description.errors.as_text}}</span>
                         </li>
                         <li>
                             <label>Empresa</label>
-                            <input type="text" placeholder="" />
+                            {{form.company_ajax}}
+                            <span class="has-error">{{form.company_ajax.errors.as_text}}</span>
+                            <p class="ui-autocomplete-empty-message"></p>
                         </li>
                         <li>
                             <label>Categoría</label>
-                            <select>
-                                <option checked>Seleciona una categoría</option>
-                            </select>
+                            {{form.category}}
+                            <span class="has-error">{{form.category.errors.as_text}}</span>
                         </li>
-                        <li>
+                        <li id="subcategoria" class="hide">
                             <label>Subcategoría</label>
-                            <select>
-                                <option checked>Seleciona una Subcategoría</option>
-                            </select>
+                            <div></div>
                         </li>
                         <li>
                             <div class="post-media-description">
@@ -68,7 +73,7 @@
                             <div class="form-section">
                                 <ul class="media-icons-list">
                                     <li>
-                                        <a href="#">
+                                        <a class="cd-popup-trigger" href="#">
                                             <i class="fa fa-picture-o media-icon"></i>
                                             Agregar imagen
                                         </a>
@@ -89,17 +94,16 @@
                             </div>
                         </li>
                         <li>
-                            <input type="checkbox" placeholder="" />
-                            <label>He leído y estoy de acuerdo con los <a href="#">términos y condiciones</a> de Dequr</label>
-                            <!--<p>You will not be able to edit your review. However, we allow adding on to it. Just create an account during the submission process.</p>-->
+                            {{form.terms}}
+                            <label>He leído y estoy de acuerdo con los <a href="#">términos y condiciones</a> de Dequr</label> <br>
+                            <span class="has-error">{{form.terms.errors.as_text}}</span>
                         </li>
                         <li>
-                            <a href="#" class="btn btn-go btn-complaint">
-                                <span class="txt">Enviar denuncia</span>
-                            </a> <a class="mlm" href="#">Omitir</a>
+                            <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Enviar denuncia"/>
                         </li>
                     </ul>
                 </div>
+                </form>
             </div>
             <!-- -->
             <div id="sidebar-left"  class="col-md-4">
@@ -118,4 +122,54 @@
     </div>
     <!-- container -->
 </div>
+<!-- container
+<div class="cd-popup" role="alert">
+    <div class="cd-popup-container">
+        <div class="container-fluid">
+            <h2 class="mtm mbm" style="font-size: 32px;">Add Images or PDFs</h2>
+            <p class="hint">You can add up to 10 files in JPEG, GIF, PNG or PDF format. Each file must be less than 5 MB.</p>
+            <ul class="images-list">
+                <li>
+                    <a href="#" class="del-image">×</a>
+                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
+                </li>
+
+                <li>
+                    <a href="#" class="del-image">×</a>
+                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
+                </li>
+
+                <li>
+                    <a href="#" class="del-image">×</a>
+                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
+                </li>
+
+                <li>
+                    <a href="#" class="del-image">×</a>
+                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
+                </li>
+
+
+            </ul>
+
+            <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                <div id="drop">
+                    Drop Here
+
+                    <a>Browse</a>
+                    <input type="file" name="upl" multiple />
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+
+
+        <a href="#" class="cd-popup-close img-replace">Cerrar</a>
+    </div> 
+</div>  cd-popup -->
+
 {% endblock %}

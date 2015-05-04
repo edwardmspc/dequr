@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=731623136870740&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapgeneral">
+    <div class="container">
+        <div class="row">
+            <div class="post_header col-md-12">
+                <div class="row">
+                    <div class="top col-md-8">
+                        <h1 class="mtm txt-c mbm" style="font-size: 32px;border-bottom: 1px dotted #ccc!important;padding-bottom: 20px;">Publica tu reseña 
+                        <smal class="hint">(paso {{ wizard.steps.step1 }} de {{ wizard.steps.count }})</smal></h1>
+
+                        <h2 class="mtm mbn"><span class="rint">{{company}}</span> requiere un poco mas de información para ponerse en contacto.</h2>
+                        <p class="hint mtxs mbm">Esta información no será pública y no es obligatoria aunque es importante si quieres que la empresa se ponga en contacto.</p>
+
+                    </div>
+                </div>
+
+            </div>
+        
+            <div id="main" class="col-md-8">
+                <form action=""  method="post">{% csrf_token %}
+                    {{ wizard.management_form }}
+                <div class="form-page">
+                    <ul>
+                        <li>
+                            <label>Nombre Completo</label>
+                            {{wizard.form.complete_name}}
+                            <span class="has-error">{{wizard.form.complete_name.errors.as_text}}</span>
+                        </li>
+                        <li>
+                            <label>Email</label>
+                            {{wizard.form.email}}
+                            <span class="has-error">{{wizard.form.email.errors.as_text}}</span>
+                        </li>
+                        <li>
+                            <label>Teléfono Móvil</label>
+                            {{wizard.form.cellphone}}
+                            <span class="has-error">{{wizard.form.cellphone.errors.as_text}}</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- end step one -->
+
+                <div class="row">
+                    <div class="top col-md-12">
+                        <h2 class="mtm mbm">Haz que tu queja sea fácil de encontrar</h2>
+                    </div>
+
+                    <div class="form-page col-md-12">
+                        <ul>
+                            <li>
+                                <label>Lugar (ciudad donde ocurrieron los hechos) </label>
+                                {{wizard.form.place}}
+                                <span class="has-error">{{wizard.form.place.errors.as_text}}</span>
+                            </li>
+                            <li>
+                                <label>Producto o Servicio</label>
+                                {{wizard.form.product_or_service}}
+                                <span class="has-error">{{wizard.form.product_or_service.errors.as_text}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end step two -->
+                </div>
+                
+                <div class="row">
+                    <div class="top col-md-12">
+                        <h2 class="mtm mbn">Que acción quieres que haga <span class="rint">{{company}}</span></h2>
+                        <p class="hint mtxs mbm">Esta información no será pública y no es obligatoria aunque es importante si quieres que la empresa se ponga en contacto.</p>
+                    </div>
+
+                    <div class="form-page col-md-12">
+                        <ul>
+                        <div class="frame">
+                            <li class="txt-c">
+                                <i class="fa fa-frown-o icon"></i>
+                            </li>
+                            {{wizard.form.actions_radio}}
+                            <span class="has-error">{{wizard.form.actions_radio.errors.as_text}}</span>
+                            <!--<li>
+                                <input value="pc_service" type="radio" name="">
+                                <label>Que me proponga una solución</label>
+                            </li>
+                            <li>
+                                <input value="pc_service" type="radio" name="">
+                                <label>La devolución de mi Dinero</label>
+                            </li>
+                            <li>
+                                <input value="pc_service" type="radio" name="">
+                                <label>Que entregue mi producto</label>
+                            </li>
+                            <li>
+                                <input value="pc_service" type="radio" name="">
+                                <label>Otra solución</label>
+                                <input type="text" placeholder="" />
+                            </li>-->
+                        </div>
+                            <li>
+                                <input class="btn btn-inline btn-primary" type="submit" id="submit" name="submit" value="Siguiente [...]"/>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!-- end step tree -->
+                </div>
+                </form>
+            </div>
+            <!-- -->
+            <div id="sidebar-left"  class="col-md-4">
+
+                <div class="complaint-box">
+                </div>
+
+
+            </div>
+            <!-- sidebar-left -->
+
+
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container -->
+</div>
+{% endblock %}

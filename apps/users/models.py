@@ -30,8 +30,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=140, unique=True)
     username = models.CharField(max_length=140, unique=True)
 
-    first_name = models.CharField(max_length=140)
-    last_name = models.CharField(max_length=140)
+    first_name = models.CharField(max_length=140, blank=True, null=True)
+    last_name = models.CharField(max_length=140, blank=True, null=True)
 
     #Extras
     is_active = models.BooleanField(default=True)
@@ -48,3 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
 
+# class UserTmp(models.Model):
+#     complete_name = models.CharField(max_length=140)
+#     email = models.EmailField(max_length=140, unique=True)
+#     cellphone = models.CharField(max_length=140)
