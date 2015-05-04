@@ -1,3 +1,4 @@
-/.codeintel
-*.[pyc]
-*.[sh]
+/.save/*
+*.pyc
+*.sh
+*.jar
