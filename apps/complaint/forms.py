@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import Complaint
+from .models import Complaint, ItemFiles
 
 
 class CreateComplaintStepTwoForm(forms.Form):
@@ -32,7 +32,7 @@ class CreateComplaintStepOneForm(forms.ModelForm):
     class Meta:
         model = Complaint
         fields = "__all__"
-        exclude = ['date_create', 'company', 'ipv4']
+        exclude = ['date_create', 'company', 'ipv4', 'audio', 'video']
 
     def clean_terms(self):
         if not self.cleaned_data["terms"]:
@@ -52,3 +52,8 @@ class CreateComplaintStepOneForm(forms.ModelForm):
     #                 classes = self.fields[f_name].widget.attrs.get('class', '')
     #                 classes += ' has-error'
     #                 self.fields[f_name].widget.attrs['class'] = classes
+
+class AjaxUploadForm(forms.ModelForm):
+    class Meta:
+        model = ItemFiles
+        fields = "__all__"

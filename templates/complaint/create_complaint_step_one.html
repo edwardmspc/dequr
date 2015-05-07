@@ -33,7 +33,13 @@
 
 
             <div id="main" class="col-md-8">
-                <form method="post">{% csrf_token %}
+                <form action="{% url 'complaint:ajax_multiupload' %}" id="MultiUploadAjax" class="hide" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <input type="file" name="image" id="image" />
+                    <input type="file" name="audio" id="audio" />
+                </form>
+
+
+                <form method="post" enctype="multipart/form-data">{% csrf_token %}
                 {{ wizard.management_form }}
                     <div class="form-page">
                     <ul>
@@ -63,6 +69,7 @@
                             <label>Subcategoría</label>
                             <div></div>
                         </li>
+                        
                         <li>
                             <div class="post-media-description">
                                 <strong>Pruebas y documentos relevantes <span class="hint">(optional)</span></strong>
@@ -80,7 +87,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a class="open_file" href="#">
                                             <i class="fa fa-music media-icon"></i>
                                             Agregar audio
                                         </a>
@@ -90,6 +97,11 @@
                                             <i class="fa fa-play-circle-o media-icon"></i>
                                             Agregar video
                                         </a>
+                                    </li>
+                                </ul>
+                                <ul class="files">
+                                    <li id="loading" class="loading hide">
+                                        <img src="{% static 'assets/img/loading.gif' %}" style="border: none;" />
                                     </li>
                                 </ul>
                             </div>

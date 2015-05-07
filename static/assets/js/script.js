@@ -32,13 +32,51 @@ $(document).ready(function() {
         if(event.which=='27'){
             $('.cd-popup').removeClass('is-visible');
         }
+    });*/
+
+    $('.cd-popup-trigger').click(function(){
+        $("#MultiUploadAjax #image").click();
     });
 
-    $('#drop a').click(function(){
-        // Simulate a click on the file input button
-        // to show the file browser dialog
-        $(this).parent().find('input').click();
-    });*/
+    $('.open_file').click(function(){
+        $("#MultiUploadAjax #audio").click();
+    });
+
+    $('#image, #audio').on('change', function(){
+
+        $('#MultiUploadAjax').ajaxForm({
+            //target: '#preview', 
+            beforeSubmit:function(){
+                $("#loading").removeClass('hide');
+            }, 
+            success:function(res){
+                console.log(res)
+                $("#loading").addClass('bien');
+                $("#loading").addClass('hide');
+                $('#loading').after('<li><img src="'+res.image+'" alt="" /></li>');
+            }, 
+            error:function(){
+                $("#loading").addClass('hide');
+                $("#loading").addClass('error');
+            } 
+        }).submit();
+    });
+        /*$.ajax({
+            url: '/ajax_multiupload/',
+            //data: {'term':category},
+            type: 'post',
+            beforeSend: function () {
+                $("#loading").removeClass('hide');
+            },
+            success: function(data) {
+                $("#loading").addClass('hide');
+            },
+
+        });
+    });
+    var A=$("#imageloadstatus");
+    var B=$("#imageloadbutton");
+*/
     function LoadSubCategory(category, assing_category) {
 
         $("#subcategoria").removeClass("hide");

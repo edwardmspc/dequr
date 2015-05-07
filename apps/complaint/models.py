@@ -14,9 +14,8 @@ class Complaint(models.Model):
     category = models.ForeignKey(Category, null=True)
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
     
-    image = models.ImageField(upload_to="complaint_documents", null=True, blank=True)
-    audio = models.FileField(upload_to="complaint_documents", null=True, blank=True)
-    video = models.URLField(blank=True, null=True)
+    #image = models.ImageField(upload_to="complaint_documents", null=True, blank=True)
+    #video = models.URLField(blank=True, null=True)
 
     slug = models.SlugField(editable=False, blank=True, null=True)
     ipv4 = models.GenericIPAddressField(protocol='IPv4', null=True, blank=True, default=None)
@@ -29,7 +28,12 @@ class Complaint(models.Model):
 
     def __unicode__(self):
         return self.title
-    
+
+class ItemFiles(models.Model):
+    complaint = models.ForeignKey(Complaint, null=True, blank=True)
+    image = models.ImageField(upload_to="complaint_documents", null=True, blank=True)
+    audio = models.FileField(upload_to="complaint_documents", null=True, blank=True)
+
 class ComplaintContact(models.Model):
     # Relacion
     complaint = models.ForeignKey(Complaint)

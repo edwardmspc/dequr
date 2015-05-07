@@ -25,8 +25,8 @@ class SubCategory(models.Model):
         super(SubCategory, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.name 
-
+        return self.name
+        
 class Company(models.Model):
     name = models.CharField(max_length=140)
     image = models.ImageField(upload_to="company_logos", blank=True)
@@ -34,4 +34,10 @@ class Company(models.Model):
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
 
     def __unicode__(self):
-        return self.name 
+        return self.name
+
+class SubCompany(models.Model):
+    name = models.CharField(max_length=140)
+    company = models.ForeignKey(Company, null=True, blank=True)
+    def __unicode__(self):
+        return self.name

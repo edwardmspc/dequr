@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
+import ast
+from dequr import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from apps.company.models import Company, SubCategory, Category
-from apps.complaint.models import Complaint, ComplaintContact, ComplaintLocation, ComplaintRequest
+from apps.complaint.models import Complaint, ComplaintContact, ComplaintLocation, ComplaintRequest, ItemFiles
 from formtools.wizard.views import SessionWizardView
-from .forms import CreateComplaintStepOneForm, CreateComplaintStepTwoForm
+from .forms import CreateComplaintStepOneForm, CreateComplaintStepTwoForm, AjaxUploadForm
 from django.core.files.storage import FileSystemStorage
 from dequr import settings
 from django.core.urlresolvers import reverse
@@ -25,13 +27,15 @@ class CreateComplaintStepOneWizard(SessionWizardView):
                     "1": "complaint/create_complaint_step_two.html",
                 }
 
-    file_storage = FileSystemStorage(location=settings.MEDIA_ROOT.child('tmp'))
-
     def get_context_data(self, form, **kwargs):
         context = super(CreateComplaintStepOneWizard, self).get_context_data(form=form, **kwargs)
         if self.steps.current == '0':
             try:
                 del self.request.session['form_data']
+            except KeyError:
+                pass
+            try:
+                del self.request.session['image_tmp']
             except KeyError:
                 pass
         elif self.steps.current == '1':
@@ -45,7 +49,7 @@ class CreateComplaintStepOneWizard(SessionWizardView):
     def done(self, form_list, **kwargs):
         # Salvamos los forms y guardamos en una session
         form_data = [form.cleaned_data for form in form_list]
-        print form_data
+        #print form_data
         try:
             form_data[0]["category"] = form_data[0]["category"].id
         except AttributeError:
@@ -58,7 +62,6 @@ class CreateComplaintStepOneWizard(SessionWizardView):
 
         self.request.session['form_data'] = form_data
         return redirect(reverse("complaint:create_complaint_last_step"))
-
 
 class IndexView(View):
     def get(self, request,  *args, **kwargs):
@@ -86,30 +89,29 @@ class CreateComplaintLastStepView(View):
 
     def get(self, request,  *args, **kwargs):
         if request.session.get("form_data", None):
-            print self.request.session['form_data']
+            ##
             # Publicar como aninimo o como usuario
+            ##
             if request.session.get("invited", None) or request.user.is_authenticated():
                 i=0
                 form_list = self.request.session['form_data']
                 for form in form_list:
                     
-                    # Intanciamos depende del paso
+                    #Procesamos los 2 formularios
                     if i==0:
-                        #Get objects categoria
+                        #Get category
                         try:
                             form["category"] = Category.objects.get(id=form["category"])
                         except Category.DoesNotExist:
                             form["category"] = None
 
-                        #Get objects categoria
+                        #Get subcategory si no None
                         try:
                             form["subcategory"] = SubCategory.objects.get(id=form["subcategory"])
                         except SubCategory.DoesNotExist:
                             form["subcategory"] = None
 
-
-
-                        # Get company si no la crea
+                        #Get company si no la crea
                         try:
                             if form["company_val"]:
                                 company = Company.objects.get(id=form["company_val"])
@@ -119,7 +121,7 @@ class CreateComplaintLastStepView(View):
                             company = Company(name=form["company"], category=form["category"], subcategory=form["subcategory"])
                             company.save()
 
-                        # Rellenamos la instanc
+                        # Get de la ip del usuario
                         ip = request.META.get('REMOTE_ADDR')
 
                         complaint = Complaint(title=form["title"],
@@ -129,10 +131,13 @@ class CreateComplaintLastStepView(View):
                                                 subcategory=form["subcategory"],
                                                 ipv4=ip,
                                                 )
+                        ##
+                        # Publicar como usuario si esta conectado
+                        ##
                         if request.user.is_authenticated():
                            complaint.user = request.user
 
-                        # Guardamos la instancia
+                        #Guardamos la instancia
                         complaint.save()
                     elif i==1:
                         complaint_contact = ComplaintContact(complaint=complaint,
@@ -144,19 +149,27 @@ class CreateComplaintLastStepView(View):
                                                                 product_or_service=form["product_or_service"],
                                                                 other_solution=form["other_solution"],)
                         complaint_request = ComplaintRequest(complaint=complaint, actions_radio=form["actions_radio"],)
-                        
+
                         # Guardamos la instancia
                         complaint_contact.save()
                         complaint_location.save()
                         complaint_request.save()
-                    i=i+1
-                # Borrar sessiones
-                #if request.session.get("form_data", None):
-                #    del self.request.session['form_data']
-                #if request.session.get("invited", None):
-                #    del self.request.session['form_data']
 
-                # Al terminar go to
+                        if request.session.get("image_tmp", None) and request.session.get("image_tmp", None)!=[]:
+                            for x in request.session['image_tmp']:
+                                #Get ItemFiles si no None
+                                try:
+                                    item_object = ItemFiles.objects.get(id=x['id'])
+                                except ItemFiles.DoesNotExist:
+                                    item_object = None
+
+                                if item_object:
+                                    item_object.complaint=complaint
+                                    item_object.save()
+
+                    i=i+1
+                
+                #Al terminar ir a la url
                 return redirect("/done/")
             else:
                 login_error = None
@@ -210,6 +223,45 @@ class CategoryView(View):
 class ProfileView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'complaint/profile.html')
+
+##
+# View Asincronas
+##
+class MultiUploadAjax(View):
+    def post(self, request,  *args, **kwargs):
+        if request.is_ajax():
+            print request.FILES
+
+            form = AjaxUploadForm(request.POST, request.FILES)
+            if form.is_valid():
+                item = form.save()
+                if request.POST['image']:
+                    data = { 
+                        'id':item.id,
+                        'image':item.image.url,
+                        }
+                else:
+                    data = { 
+                        'id':item.id,
+                        'image':None,
+                    }
+                data_temp = []
+                try:
+                    data_temp = self.request.session['image_tmp']
+                    data_temp.append(data)
+                except:
+                   data_temp.append(data)
+                self.request.session['image_tmp'] = data_temp
+            else:
+                data = { 'status':'200', }
+
+            mimetype = 'application/json'
+            data_json = json.dumps(data)
+            return HttpResponse(data_json, mimetype) 
+        else:
+            # render() a form with data (No AJAX)
+            # redirect to results ok, or similar may go here 
+            pass
 
 class AjaxCompany(View):
     def get(self, request,  *args, **kwargs):

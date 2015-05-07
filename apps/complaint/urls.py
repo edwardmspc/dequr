@@ -9,7 +9,8 @@ from .views import (
                     AjaxCompany,
                     AjaxLoadCategoryFromAutocompleteCompany,
                     AjaxLoadSubCategory,
-                    CreateComplaintStepOneWizard, 
+                    CreateComplaintStepOneWizard,
+                    MultiUploadAjax,
                     FORMS
                    )
 
@@ -27,6 +28,7 @@ urlpatterns = [
 
 
     #Autocompletar ajax 
+    url(r'^ajax_multiupload/$', MultiUploadAjax.as_view(), name='ajax_multiupload'),
     url(r'^ajax_company/$', AjaxCompany.as_view(), name='ajax_company'),
     url(r'^ajax_load_category_from_autocomplete_company/$', AjaxLoadCategoryFromAutocompleteCompany.as_view()),
     url(r'^ajax_load_subcategory/$', AjaxLoadSubCategory.as_view()),

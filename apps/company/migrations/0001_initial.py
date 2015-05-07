@@ -36,6 +36,14 @@ class Migration(migrations.Migration):
                 ('category', models.ForeignKey(blank=True, to='company.Category', null=True)),
             ],
         ),
+        migrations.CreateModel(
+            name='SubCompany',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=140)),
+                ('company', models.ForeignKey(blank=True, to='company.Company', null=True)),
+            ],
+        ),
         migrations.AddField(
             model_name='company',
             name='subcategory',
