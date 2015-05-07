@@ -17,17 +17,17 @@
             <div class="post_header col-md-12">
                 <div class="row">
                     <div class="top txt-c col-md-8">
-                        <h1 class="mtm mb-large" style="font-size: 32px;border-bottom: 1px dotted #ccc!important;padding-bottom: 20px;">Publica tu reseña 
+                        <h1 class="mtm mb-large" style="font-size: 32px;border-bottom: 1px dotted #ccc!important;padding-bottom: 20px;">Publica tu queja 
                         <smal class="hint">(paso {{ wizard.steps.step1 }} de {{ wizard.steps.count }})</smal></h1>
                     </div>
                 </div>
 
-                <div class="options mb-large">
+                <!--<div class="options mb-large">
                     <ul>
                         <li><a class="active" href="#">Regular <small>Gratis</small></a></li>
                         <li><a href="#">Premium <small></small></a></li>
                     </ul>
-                </div>
+                </div>-->
 
             </div>
 
@@ -44,30 +44,61 @@
                     <div class="form-page">
                     <ul>
                         <li>
-                            <label>Título de tu queja: Describe tu problema en pocas palabras (máximo 140 caracteres). No escribas todo en mayúsculas</label>
-                            {{wizard.form.title}}
+                            {% if wizard.form.title.errors.as_text %}
+                                <span class="has-error" style="background-color: #FFFBAB; padding: 5px; border-radius: 5px; margin-bottom: 5px; display: block;
+                                /*width: 50%;*/">Titulo: {{wizard.form.title.errors.as_text}}</span>
+                            {% endif %}
+
+                            {% if wizard.form.description.errors.as_text %}
+                                <span class="has-error" style="background-color: #FFFBAB; padding: 5px; border-radius: 5px; margin-bottom: 5px; display: block;
+                                /*width: 50%;*/">Descripcion: {{wizard.form.description.errors.as_text}}</span>
+                            {% endif %}
+
+                            {% if wizard.form.company.errors.as_text %}
+                                <span class="has-error" style="background-color: #FFFBAB; padding: 5px; border-radius: 5px; margin-bottom: 5px; display: block;
+                                /*width: 50%;*/">Empresa: {{wizard.form.company.errors.as_text}}</span>
+                            {% endif %}
+
+                            {% if wizard.form.category.errors.as_text %}
+                                <span class="has-error" style="background-color: #FFFBAB; padding: 5px; border-radius: 5px; margin-bottom: 5px; display: block;
+                                /*width: 50%;*/">Categoría: {{wizard.form.category.errors.as_text}}</span>
+                            {% endif %}
+
+                            {% if wizard.form.terms.errors.as_text %}
+                                <span class="has-error" style="background-color: #FFFBAB; padding: 5px; border-radius: 5px; margin-bottom: 5px; display: block;
+                                /*width: 50%;*/">Términos y condiciones: {{wizard.form.terms.errors.as_text}}</span>
+                            {% endif %}
+
+                        </li>
+
+                        <li>
+                            <span class="has-error">{{wizard.form.terms.errors.as_text}}</span>
+                        </li>
+                        <li>
+                            <label>Describe tu problema en pocas palabras (máximo 140 caracteres) <small class="hint">No escribas todo en mayúsculas.</small>
+                            {{wizard.form.title}}</label>
                             <span class="has-error">{{wizard.form.title.errors.as_text}}</span>
                         </li>
                         <li>
-                            <label>Que fue exactamente lo que sucedió, entre más detalles ofrezcas más posibilidades de conseguir una solución.</label>
-                            {{wizard.form.description}}
+                            <label>Que fue exactamente lo que sucedió, <small class="hint">Entre más detalles ofrezcas más posibilidades de conseguir una solución.</small>
+                            {{wizard.form.description}}</label>
                             <span class="has-error">{{wizard.form.description.errors.as_text}}</span>
                         </li>
                         <li>
-                            <label>Empresa</label>
-                            {{wizard.form.company}}
+                            <label>Empresa
+                            {{wizard.form.company}}</label>
                             {{wizard.form.company_val}}
                             <span class="has-error">{{wizard.form.company.errors.as_text}}</span>
                             <p class="ui-autocomplete-empty-message"></p>
                         </li>
                         <li>
-                            <label>Categoría</label>
-                            {{wizard.form.category}}
+                            <label>Categoría
+                            {{wizard.form.category}}</label>
                             <span class="has-error">{{wizard.form.category.errors.as_text}}</span>
                         </li>
                         <li id="subcategoria" class="hide">
-                            <label>Subcategoría</label>
-                            <div></div>
+                            <label>Subcategoría
+                            <div></div></label>
                         </li>
                         
                         <li>
@@ -81,7 +112,7 @@
                             <div class="form-section">
                                 <ul class="media-icons-list">
                                     <li>
-                                        <a class="cd-popup-trigger" href="#">
+                                        <a class="open_image" href="#">
                                             <i class="fa fa-picture-o media-icon"></i>
                                             Agregar imagen
                                         </a>
@@ -92,12 +123,12 @@
                                             Agregar audio
                                         </a>
                                     </li>
-                                    <li>
+                                    <!--<li>
                                         <a href="#">
                                             <i class="fa fa-play-circle-o media-icon"></i>
                                             Agregar video
                                         </a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                                 <ul class="files">
                                     <li id="loading" class="loading hide">
@@ -112,8 +143,8 @@
                             </div>
                         </li>
                         <li>
-                            {{wizard.form.terms}}
-                            <label for="id_0-{{form.terms.name}}">He leído y estoy de acuerdo con los <a href="#">términos y condiciones</a> de Dequr <br></label> <br>
+                            <label>{{wizard.form.terms}}
+                            He leído y estoy de acuerdo con los <a href="#">términos y condiciones</a> de Dequr <br></label> <br>
                             <span class="has-error">{{wizard.form.terms.errors.as_text}}</span>
                         </li>
                         <li>
@@ -140,54 +171,5 @@
     </div>
     <!-- container -->
 </div>
-<!-- container
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
-        <div class="container-fluid">
-            <h2 class="mtm mb-large" style="font-size: 32px;">Add Images or PDFs</h2>
-            <p class="hint">You can add up to 10 files in JPEG, GIF, PNG or PDF format. Each file must be less than 5 MB.</p>
-            <ul class="images-list">
-                <li>
-                    <a href="#" class="del-image">×</a>
-                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
-                </li>
-
-                <li>
-                    <a href="#" class="del-image">×</a>
-                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
-                </li>
-
-                <li>
-                    <a href="#" class="del-image">×</a>
-                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
-                </li>
-
-                <li>
-                    <a href="#" class="del-image">×</a>
-                    <img src="http://www.pissedconsumer.com/review-pictures/tmp/55234c8721956be44f73feaaca1e6201.jpg" width="120" height="90" alt="">
-                </li>
-
-
-            </ul>
-
-            <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-                <div id="drop">
-                    Drop Here
-
-                    <a>Browse</a>
-                    <input type="file" name="upl" multiple />
-                </div>
-
-            </form>
-
-        </div>
-
-
-
-
-
-        <a href="#" class="cd-popup-close img-replace">Cerrar</a>
-    </div> 
-</div>  cd-popup -->
 
 {% endblock %}

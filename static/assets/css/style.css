@@ -10,6 +10,9 @@ p {margin:10px 0px 20px 0px;}
 h2 {font-family:"ralewaymedium";}
 h2.reclamo-teaser-title a {font-family:"ralewaymedium";color:#ff2935;font-size:22px;}*/
 html.js fieldset, html.js fieldset.collapsed {margin-bottom:20px;}
+label {
+  display: block!important;
+}
 .footer {background:#eee url(http://www.gainesvilleconnect.com/images/footer-patterns/footer-pattern-03.png);
     color:#ffffff;clear:both;margin-top:60px;
 

@@ -25,6 +25,12 @@ class CreateComplaintStepTwoForm(forms.Form):
     actions_radio = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES, required=False)
 
 class CreateComplaintStepOneForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CreateComplaintStepOneForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs['placeholder'] = "Título de tu queja"
+        self.fields['description'].widget.attrs['placeholder'] = "Descripcion de tu queja"
+        self.fields['company'].widget.attrs['placeholder'] = "Nombre de la empresa"
+
     company = forms.CharField(max_length=140, )
     company_val = forms.CharField(max_length=140, widget=forms.HiddenInput(), required=False)
     terms = forms.BooleanField(required=False)
@@ -43,15 +49,6 @@ class CreateComplaintStepOneForm(forms.ModelForm):
         if User.objects.filter(email=self.cleaned_data['email']).exists():
             raise forms.ValidationError("El Correo electrónico ya se encuentra registrado")
         return self.cleaned_data['email']
-
-    # def __init__(self, *args, **kwargs):
-    #     super(ComplaintPOSTForm, self).__init__(*args, **kwargs)
-    #     if self.errors:
-    #         for f_name in self.fields:
-    #             if f_name in self.errors:
-    #                 classes = self.fields[f_name].widget.attrs.get('class', '')
-    #                 classes += ' has-error'
-    #                 self.fields[f_name].widget.attrs['class'] = classes
 
 class AjaxUploadForm(forms.ModelForm):
     class Meta:

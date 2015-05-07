@@ -34,7 +34,7 @@ $(document).ready(function() {
         }
     });*/
 
-    $('.cd-popup-trigger').click(function(){
+    $('.open_image').click(function(){
         $("#MultiUploadAjax #image").click();
     });
 
