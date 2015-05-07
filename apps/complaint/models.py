@@ -21,6 +21,8 @@ class Complaint(models.Model):
     ipv4 = models.GenericIPAddressField(protocol='IPv4', null=True, blank=True, default=None)
     date_create = models.DateTimeField(default=timezone.now)
 
+    is_approved = models.BooleanField(default=False)
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = '%s' % (slugify(self.title))

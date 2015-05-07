@@ -33,6 +33,8 @@ class Company(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True)
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
 
+    is_approved = models.BooleanField(default=False)
+    
     def __unicode__(self):
         return self.name
 

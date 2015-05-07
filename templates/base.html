@@ -31,21 +31,21 @@
                 <div class="row">
                     <div class="col-sm-8 col-xs-6 hide-overflow">
                         <ul class="navegacion">
-                            <li class="mrs">
+                            <li class="mr-large">
                                 <a href="{% url 'general:index' %}" class="logo">
                                     <img style="width: 180px;padding: 5px 0;" src="{% static 'assets/img/dequr_megafono.png' %}" alt="" title="">
                                 </a>
                             </li>
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="#"><i class="fa fa-file-text-o mrxxs"></i>Quejas</a>
                             </li>
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="#"><i class="fa fa-folder-open mrxxs"></i>Categorias</a>
                             </li>
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="{% url 'user:index' %}"><i class="fa fa-book mrxxs"></i>Blog</a>
                             </li>
-                            <!--<li class="mts mrxs hidden-xs hidden-sm">
+                            <!--<li class="mt-large mr-small hidden-xs hidden-sm">
                                 <form  id="global-search" action="/search">
                                     <label for="filter-by"><i class="fa fa-search"></i></label>
                                     <input name="q" type="search" placeholder="Buscar">
@@ -57,14 +57,14 @@
                         <ul class="navegacion" style="text-align: right;">
                             <li style="height: 52px;"></li>
                             {% if user.is_authenticated %}
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="{% url 'user:logout' %}">{{user.first_name}} {{user.last_name}}</a>
                             </li>
                             {% else %}
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="{% url 'user:index' %}"><i class="fa fa-user mrxxs"></i>Iniciar sesión</a>
                             </li>
-                            <li class="mrxs hidden-xs">
+                            <li class="mr-small hidden-xs">
                                 <a href="#"><i class="fa fa-suitcase mrxxs"></i>Para Empresas</a>
                             </li>
                             {% endif %}
