@@ -103,6 +103,11 @@
                                     <li id="loading" class="loading hide">
                                         <img src="{% static 'assets/img/loading.gif' %}" style="border: none;" />
                                     </li>
+                                    {% if image_tmp %}
+                                        {% for img in image_tmp %}
+                                            <li><img src="{{ img.image }}" alt="" /></li>
+                                        {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </li>

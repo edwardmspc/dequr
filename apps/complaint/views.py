@@ -30,6 +30,8 @@ class CreateComplaintStepOneWizard(SessionWizardView):
     def get_context_data(self, form, **kwargs):
         context = super(CreateComplaintStepOneWizard, self).get_context_data(form=form, **kwargs)
         if self.steps.current == '0':
+            context.update({'image_tmp': self.request.session.get("image_tmp", None), })
+
             try:
                 del self.request.session['form_data']
             except KeyError:
@@ -38,6 +40,7 @@ class CreateComplaintStepOneWizard(SessionWizardView):
                 del self.request.session['image_tmp']
             except KeyError:
                 pass
+                
         elif self.steps.current == '1':
             aux = self.get_cleaned_data_for_step("0")['company']
             context.update({'company': aux, })
