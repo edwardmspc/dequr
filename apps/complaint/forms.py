@@ -6,13 +6,13 @@ from .models import Complaint, ItemFiles
 class CreateComplaintStepTwoForm(forms.Form):
 
     # Contacto
-    complete_name = forms.CharField(max_length=140, required=False)
-    email = forms.EmailField(max_length=140, required=False)
-    cellphone = forms.CharField(max_length=140, required=False)
+    complete_name = forms.CharField(max_length=140, required=False, widget=forms.TextInput(attrs={"placeholder": "Nombre completo"}))
+    email = forms.EmailField(max_length=140, required=False, widget=forms.TextInput(attrs={"placeholder": "Correo electrónico"}))
+    cellphone = forms.CharField(max_length=140, required=False, widget=forms.TextInput(attrs={"placeholder": "Telefono"}))
     
     # Localizacion
-    place = forms.CharField(max_length=140, required=False)
-    product_or_service = forms.CharField(max_length=140, required=False)
+    place = forms.CharField(max_length=140, required=False, widget=forms.TextInput(attrs={"placeholder": "Lugar"}))
+    product_or_service = forms.CharField(max_length=140, required=False, widget=forms.TextInput(attrs={"placeholder": "Producto o servicio"}))
     other_solution = forms.CharField(max_length=140, required=False)
 
     CHOICES = [

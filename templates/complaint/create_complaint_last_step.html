@@ -124,10 +124,7 @@
 
                         <div class="control-group mtm mb-none">
                             <div class="control">
-                                <input value="Iniciar sesión" type="submit" class="btn btn-inline btn-inverse">
-                                <div class="mtl type-small txt-c">
-                                    <span>¿No tienes una cuenta?&nbsp;</span><a href="#register">Regístrate</a>
-                                </div>
+                                <input  style="float: left;" value="Iniciar sesión" type="submit" class="btn btn-inline btn-inverse">
                             </div>
                         </div>
                     </form>
@@ -174,25 +171,23 @@
 
                         <div class="control-group mtm mb-none">
                             <div class="control">
-                                <input value="Regístrate" type="submit" class="btn btn-inline btn-inverse">
-                                <div class="mtl type-small txt-c">
-                                    <span>¿Ya tienes una cuenta? </span><a href="#login">Iniciar sesión</a>
-                                </div>
+                                <input style="float: left;" value="Regístrate" type="submit" class="btn btn-inline btn-inverse">
                             </div>
                         </div>
                     </form>
-                    <p class="mts txt-c type-smaller type-muted"> Sumándote o ingresando via Facebook, Twitter o Google+, aceptas los <a href="#">términos y condiciones</a> y las <a href="#">reglas de uso</a> de Dequr.com y aceptas recibir mensajes de correo electrónico ocasionalmente sobre campañas en Dequr.com.</p>
-
-                    <form method="post">{% csrf_token %}
-                    <input id="id_form" name="form" type="hidden" value="invited">
-                    <div class="form-page">
-                     <ul>
-                        <li>
-                            <input class="btn btn-inline btn-primary" type="submit" id="submit" name="submit" value="Publicar Denuncia"/>
-                        </li>
-                    </ul>
-                    </div>
+                    <form method="post" style="float: right;">{% csrf_token %}
+                        <input id="id_form" name="form" type="hidden" value="invited">
+                        <div class="form-page">
+                         <ul>
+                            <li>
+                                <input class="btn btn-inline btn-primary" type="submit" id="submit" name="submit" value="Publicar queja anonima"/>
+                            </li>
+                        </ul>
+                        </div>
                     </form>
+
+                    <p style="clear: both;" class="mts txt-c type-smaller type-muted"> Sumándote o ingresando via Facebook, Twitter o Google+, aceptas los <a href="#">términos y condiciones</a> y las <a href="#">reglas de uso</a> de Dequr.com y aceptas recibir mensajes de correo electrónico ocasionalmente sobre campañas en Dequr.com.</p>
+
                 </div>
             </div>
         </div>
