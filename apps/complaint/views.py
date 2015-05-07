@@ -16,11 +16,20 @@ from apps.users.forms import LoginTraditionalForm, UserCreateForm
 from django.contrib.auth import login, authenticate
 
 
-FORMS = [
-            ("0", CreateComplaintStepOneForm),
-            ("1", CreateComplaintStepTwoForm),
-        ]
+class IndexView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/single_page.html')
 
+class CategoryView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/category.html')
+
+class ProfileView(View):
+    def get(self, request,  *args, **kwargs):
+        return render(request, 'complaint/profile.html')
+
+
+FORMS = [("0", CreateComplaintStepOneForm),("1", CreateComplaintStepTwoForm),]
 class CreateComplaintStepOneWizard(SessionWizardView):
     TEMPLATES = {
                     "0": "complaint/create_complaint_step_one.html",
@@ -40,7 +49,7 @@ class CreateComplaintStepOneWizard(SessionWizardView):
                 del self.request.session['image_tmp']
             except KeyError:
                 pass
-                
+
         elif self.steps.current == '1':
             aux = self.get_cleaned_data_for_step("0")['company']
             context.update({'company': aux, })
@@ -66,27 +75,6 @@ class CreateComplaintStepOneWizard(SessionWizardView):
         self.request.session['form_data'] = form_data
         return redirect(reverse("complaint:create_complaint_last_step"))
 
-class IndexView(View):
-    def get(self, request,  *args, **kwargs):
-        return render(request, 'complaint/single_page.html')
-
-# class PostView(View):
-#     def get(self, request,  *args, **kwargs):
-#         form = CreateComplaintStepOneForm()
-#         return render(request, 'complaint/post_page.html', {'form':form})
-
-#     def post(self, request, *args, **kwargs):
-#         form = CreateComplaintStepOneForm(request.POST, request.FILES)
-
-#         if form.is_valid():
-#             #form.save()
-#             return render(request, 'complaint/post_page.html', {'form': form})
-#         else:
-#             return render(request, 'complaint/post_page.html', {'form': form})
-
-# class StepOneView(View):
-#     def get(self, request,  *args, **kwargs):
-#         return render(request, 'complaint/step_one.html')
 
 class CreateComplaintLastStepView(View):
 
@@ -169,11 +157,10 @@ class CreateComplaintLastStepView(View):
                                 if item_object:
                                     item_object.complaint=complaint
                                     item_object.save()
-
                     i=i+1
                 
                 #Al terminar ir a la url
-                return redirect("/done/")
+                return redirect(reverse("complaint_finish"))
             else:
                 login_error = None
                 login_form = LoginTraditionalForm()
@@ -219,13 +206,10 @@ class CreateComplaintLastStepView(View):
         return render(request, 'complaint/create_complaint_last_step.html', {'login_form':login_form,
             'register_form':register_form, 'login_error':login_error,})
 
-class CategoryView(View):
+class CreateComplaintFinishView(View):
     def get(self, request,  *args, **kwargs):
-        return render(request, 'complaint/category.html')
+        return render(request, 'complaint/create_complaint_finish.html')
 
-class ProfileView(View):
-    def get(self, request,  *args, **kwargs):
-        return render(request, 'complaint/profile.html')
 
 ##
 # View Asincronas

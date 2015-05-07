@@ -11,6 +11,7 @@ from .views import (
                     AjaxLoadSubCategory,
                     CreateComplaintStepOneWizard,
                     MultiUploadAjax,
+                    CreateComplaintFinishView,
                     FORMS
                    )
 
@@ -25,6 +26,7 @@ urlpatterns = [
     #Wizard Create
     url(r'^create_complaint/$', CreateComplaintStepOneWizard.as_view(FORMS, condition_dict={'cc': 0}), name='create'),
     url(r'^create_complaint_last_step/$', CreateComplaintLastStepView.as_view(), name='create_complaint_last_step'),
+    url(r'^complaint_finish/$', CreateComplaintFinishView.as_view(), name='complaint_finish'),
 
 
     #Autocompletar ajax 

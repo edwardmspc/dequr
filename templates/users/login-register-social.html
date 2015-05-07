@@ -7,20 +7,20 @@
     
     <div class="row">
         <div class="box-sm bg-brighter paxxl col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <h3 class="txt-c mtn mbxl">Inicia sesión o regístrate</h3>
+            <h3 class="txt-c mtn mb-xlarge">Inicia sesión o regístrate</h3>
             <div class="components-login" data-view="components/login_or_join" data-sign_up="false" data-render="true">
                 <div class="swap-view" data-view="components/swap-view" data-templatename="components/login_or_join/log_in" data-ispartial="true" data-render="true">
 
                 <div class="txt-c">
-                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-inline btn-primary mbxs">
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-inline btn-primary mb-small">
                         <span class="txt"><i class="fa fa-facebook mrxxs"></i>Ingresar con Facebook</span>
                     </a>
 
-                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-inline btn-primary mbxs">
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-inline btn-primary mb-small">
                         <span class="txt"><i class="fa fa-twitter mrxxs"></i>Ingresar con Twitter</span>
                     </a>
 
-                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-inline btn-primary mbxs">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-inline btn-primary mb-small">
                         <span class="txt"><i class="fa fa-google mrxxs"></i>Ingresar con Google</span>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                     </div>
 
 
-                    <ul id="tabs" class="nav nav-tabs nav-justified mbxs">
+                    <ul id="tabs" class="nav nav-tabs nav-justified mb-small">
                       <li class="active"><a href="#login">Login</a></li>
                       <li><a href="#register">Registro</a></li>
                     </ul>
@@ -85,7 +85,7 @@
                             <a href="#">¿Olvidaste tu contraseña?</a>
                         </div>
 
-                        <div class="control-group mtm mbn">
+                        <div class="control-group mtm mb-none">
                             <div class="control">
                                 <input value="Iniciar sesión" type="submit" class="btn btn-inline btn-inverse">
                                 <div class="mtl type-small txt-c">
@@ -135,7 +135,7 @@
                             </div>
                         </div>
 
-                        <div class="control-group mtm mbn">
+                        <div class="control-group mtm mb-none">
                             <div class="control">
                                 <input value="Regístrate" type="submit" class="btn btn-inline btn-inverse">
                                 <div class="mtl type-small txt-c">
@@ -149,7 +149,7 @@
                 Sumándote o ingresando via Facebook, Twitter o Google+, aceptas los <a href="#">términos y condiciones</a> y las <a href="#">reglas de uso</a> de Dequr.com y aceptas recibir mensajes de correo electrónico ocasionalmente sobre campañas en Dequr.com.
             </div>
         </div>
-        <hr class="visible-xs mtn mbxl">
+        <hr class="visible-xs mtn mb-xlarge">
     </div>
 </div>
 {% endblock %}
