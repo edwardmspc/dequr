@@ -230,21 +230,14 @@ class ProfileView(View):
 class MultiUploadAjax(View):
     def post(self, request,  *args, **kwargs):
         if request.is_ajax():
-            print request.FILES
-
             form = AjaxUploadForm(request.POST, request.FILES)
             if form.is_valid():
                 item = form.save()
-                if request.POST['image']:
-                    data = { 
-                        'id':item.id,
-                        'image':item.image.url,
-                        }
+                if request.FILES.get('image', None):
+                    data = {'id':item.id, 'image':item.image.url, }
                 else:
-                    data = { 
-                        'id':item.id,
-                        'image':None,
-                    }
+                    data = {'id':item.id, 'image':None}
+
                 data_temp = []
                 try:
                     data_temp = self.request.session['image_tmp']
