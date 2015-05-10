@@ -126,9 +126,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'dequr',
-        'USER': 'root',
-        'PASSWORD': '21109782',
-        'HOST': 'localhost',
+        'USER': 'dequr',
+        'PASSWORD': 'DequR2014@',
+        'HOST': '190.75.158.102',
         'PORT': '3306',
     }
 }
