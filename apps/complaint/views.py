@@ -20,9 +20,6 @@ class IndexView(View):
     def get(self, request,  *args, **kwargs):
         return render(request, 'complaint/single_page.html')
 
-class CategoryView(View):
-    def get(self, request,  *args, **kwargs):
-        return render(request, 'complaint/category.html')
 
 class ProfileView(View):
     def get(self, request,  *args, **kwargs):
@@ -87,7 +84,7 @@ class CreateComplaintLastStepView(View):
                 i=0
                 form_list = self.request.session['form_data']
                 for form in form_list:
-                    
+
                     #Procesamos los 2 formularios
                     if i==0:
                         #Get category
@@ -158,7 +155,7 @@ class CreateComplaintLastStepView(View):
                                     item_object.complaint=complaint
                                     item_object.save()
                     i=i+1
-                
+
                 #Al terminar ir a la url
                 return redirect(reverse("complaint_finish"))
             else:
@@ -237,10 +234,10 @@ class MultiUploadAjax(View):
 
             mimetype = 'application/json'
             data_json = json.dumps(data)
-            return HttpResponse(data_json, mimetype) 
+            return HttpResponse(data_json, mimetype)
         else:
             # render() a form with data (No AJAX)
-            # redirect to results ok, or similar may go here 
+            # redirect to results ok, or similar may go here
             pass
 
 class AjaxCompany(View):
@@ -264,7 +261,7 @@ class AjaxCompany(View):
             data = 'fail'
 
         mimetype = 'application/json'
-        return HttpResponse(data, mimetype)        
+        return HttpResponse(data, mimetype)
 
 class AjaxLoadCategoryFromAutocompleteCompany(View):
     def get(self, request,  *args, **kwargs):

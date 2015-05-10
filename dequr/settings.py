@@ -93,6 +93,7 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1573536116267749'
 SOCIAL_AUTH_FACEBOOK_SECRET = '0160f7f0bbd27956969edc7ed08cbc5e'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_TWITTER_KEY = 'Gvs0S9GVgs0dLTIK0gqNgkLAl'
 SOCIAL_AUTH_TWITTER_SECRET = 'DeSXhystfnu8QxZ3iC9si5kMsIjSrTYYHRfYf4Hi39XBZys8B8'
@@ -120,11 +121,15 @@ WSGI_APPLICATION = 'dequr.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+#instanciaprueba.cqminbbwlacp.us-west-2.rds.amazonaws.com:3306
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'dequr',
+        'USER': 'root',
+        'PASSWORD': '21109782',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

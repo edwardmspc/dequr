@@ -26,7 +26,7 @@ class SubCategory(models.Model):
 
     def __unicode__(self):
         return self.name
-        
+
 class Company(models.Model):
     name = models.CharField(max_length=140)
     image = models.ImageField(upload_to="company_logos", blank=True)
@@ -34,12 +34,13 @@ class Company(models.Model):
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
 
     is_approved = models.BooleanField(default=False)
-    
+
     def __unicode__(self):
         return self.name
 
 class SubCompany(models.Model):
     name = models.CharField(max_length=140)
     company = models.ForeignKey(Company, null=True, blank=True)
+
     def __unicode__(self):
         return self.name

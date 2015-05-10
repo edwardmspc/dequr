@@ -1,8 +1,13 @@
 @import url("btn.css");
 @import url("helpers.css");
 
-body {color:#122c4f;}
-a {color:#ff2935;text-decoration:none;}
+body {
+  color:#122c4f;
+}
+a {
+  color:#ff2935;
+  text-decoration:none;
+}
 a:focus, a:hover {
   text-decoration: none!important;
   outline: none!important;
@@ -1300,4 +1305,17 @@ width: 235px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   background: #fff;
+}
+.categorys-list {
+  padding-left: 0;
+  margin: 0;
+}
+.categorys-list li{
+  display: block!important;
+  text-align: left!important;
+}
+.categorys-list li.title{
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
