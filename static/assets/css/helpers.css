@@ -1,0 +1,82 @@
+
+/**
+ * Margin Bottom
+ */
+.mb-none {
+	margin-bottom: 0!important;
+}
+.mb-small {
+	margin-bottom: 10px!important;
+}
+.mb-large {
+	margin-bottom: 20px!important;
+}
+.mb-xlarge {
+  margin-bottom: 30px!important;
+}
+.mb-xxlarge {
+	margin-bottom: 60px!important;
+}
+
+
+/**
+ * Margin Top
+ */
+.mt-none {
+  margin-top: 0!important;
+}
+.mt-small {
+  margin-top: 10px!important;
+}
+.mt-large {
+  margin-top: 20px!important;
+}
+.mt-xlarge {
+  margin-top: 30px!important;
+}
+.mt-xxlarge {
+  margin-top: 60px!important;
+}
+
+/**
+ * Margin Right
+ */
+.mr-none {
+  margin-right: 0!important;
+}
+.mr-small {
+  margin-right: 10px!important;
+}
+.mr-large {
+  margin-right: 20px!important;
+}
+.mr-xlarge {
+  margin-right: 30px!important;
+}
+.mr-xxlarge {
+  margin-right: 60px!important;
+}
+
+.mrxxs {
+  margin-right: 5px!important;
+}
+
+/**
+ * Margin Left
+ */
+.ml-xlarge {
+  margin-left: 30px!important;
+}
+
+/**
+ * Margin Aligns
+ */
+.txt-c {
+  text-align: center;
+}
+.txt-r {
+  text-align: right;
+}
+.txt-l {
+  text-align: left;
+}

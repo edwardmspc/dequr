@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=731623136870740&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapgeneral">
+    <div class="container">
+        <div class="row">
+        
+            <div id="main" class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="mt-xxlarge col-md-8 col-md-offset-2">
+                        <h1 class="txt-c" style="display: block; height: auto; color: #058f00; font-weight: bold; margin: 0 0 1rem; line-height: 1;">Felicidades!</h1>
+                        <p>Tu queja ha sido publicada correctamente, actualmente esta en moderacion.</p>
+                    </div>
+
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="box txt-c">
+                                <a href="#" class="btn btn-small btn-inline mb-small">
+                                    <span class="txt"><i class="fa fa-facebook mrxxs"></i>Comparte con Facebook</span>
+                                </a>
+
+                                <a href="#" class="btn btn-small btn-inline mb-small">
+                                    <span class="txt"><i class="fa fa-twitter mrxxs"></i>Comparte con Twitter</span>
+                                </a>
+
+                                <a href="#" class="btn btn-small btn-inline mb-small">
+                                    <span class="txt"><i class="fa fa-google mrxxs"></i>Comparte con Google</span>
+                                </a>
+                        </div>
+
+                        <p class="txt-c">
+                            <a class="mt" href="#"><strong>Ir tu publicacion</strong></a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- main -->
+            
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container -->
+</div>
+{% endblock %}
