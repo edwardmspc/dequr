@@ -157,7 +157,7 @@ class CreateComplaintLastStepView(View):
                     i=i+1
 
                 #Al terminar ir a la url
-                return redirect(reverse("complaint_finish"))
+                return redirect(reverse("complaint:complaint_finish"))
             else:
                 login_error = None
                 login_form = LoginTraditionalForm()
