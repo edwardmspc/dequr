@@ -4,5 +4,5 @@ from .views import (CategoryView, CategorysView)
 
 urlpatterns = [
     url(r'^categorys/$', CategorysView.as_view(), name='categorys'),
-    url(r'^category/$', CategoryView.as_view(), name='category'),
+    url(r'^category/(?P<slug>[-\w]+)/$', CategoryView.as_view(), name='category'),
 ]
