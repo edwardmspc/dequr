@@ -1,48 +1,26 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from apps.category.models import Category, SubCategory
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=140)
-    image = models.ImageField(upload_to="category_logos", blank=True)
-    slug = models.SlugField(editable=False)
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.name
-
-class SubCategory(models.Model):
-    name = models.CharField(max_length=140)
-    image = models.ImageField(upload_to="subcategory_logos", blank=True)
-    category = models.ForeignKey(Category, null=True, blank=True)
-    slug = models.SlugField(editable=False)
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.name)
-        super(SubCategory, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.name
 
 class Company(models.Model):
-    name = models.CharField(max_length=140)
-    image = models.ImageField(upload_to="company_logos", blank=True)
     category = models.ForeignKey(Category, null=True, blank=True)
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
-
-    is_approved = models.BooleanField(default=False)
+    name = models.CharField(max_length=140, unique=True)
+    image = models.ImageField(upload_to="company_logos", blank=True)
+    email = models.EmailField(max_length=140, blank=True)
+    is_approved = models.BooleanField(default=False, blank=True)
+    phone = models.CharField(max_length=140, blank=True)
+    web_url = models.CharField(max_length=140, blank=True)
+    facebook = models.CharField(max_length=140, blank=True)
+    twitter = models.CharField(max_length=140, blank=True)
 
     def __unicode__(self):
         return self.name
 
+
 class SubCompany(models.Model):
-    name = models.CharField(max_length=140)
     company = models.ForeignKey(Company, null=True, blank=True)
+    name = models.CharField(max_length=140)
 
     def __unicode__(self):
         return self.name

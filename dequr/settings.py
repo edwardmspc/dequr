@@ -44,6 +44,7 @@ THIRD_PARTY_APP = (
 )
 
 LOCAL_APP = (
+    'apps.category',
     'apps.company',
     'apps.complaint',
     'apps.general',
@@ -124,7 +125,7 @@ WSGI_APPLICATION = 'dequr.wsgi.application'
 #instanciaprueba.cqminbbwlacp.us-west-2.rds.amazonaws.com:3306
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dequr',
         'USER': 'dequr',
         'PASSWORD': 'DequR2014@',
@@ -159,4 +160,3 @@ else:
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.child('media')
-

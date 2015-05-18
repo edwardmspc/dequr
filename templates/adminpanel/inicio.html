@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+
+<div id="wrapgeneral" class="mt-large">
+	<div class="container">
+		<div class="row">
+			<div id="main" class="col-md-8">
+			<table class="table">
+					<tbody>
+						<tr>
+							<!--<th scope="row">{{forloop.counter}}</th>-->
+							<th><label><input name="hide_asignadas" type="checkbox"/> Sin asignadas</label></th>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Seleciona el Padre</th>
+							<th>Convertir a Padre</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for subcompany in subcompanys %}
+						<tr>
+							<td>{{subcompany.name}}</td>
+							<td>
+								<select id="{{subcompany.id}}">
+									<option selected="selected">---------</option>
+								</select>
+							</td>
+							<td class="txt-c"><a href="#" id="{{subcompany.id}}" class="convert_to_father btn btn-inline btn-small btn-primary mb-small"><i class="fa fa-check"></i></a></td>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						// Convertir a padre
+						$('a.convert_to_father').click(function() {
+							var element = $(this).parents("tr").remove();
+							var id = $(this).attr("id");
+
+							$.ajax({
+								url: '{% url "panel:index" %}',
+								data: {'convert_to_father': id},
+								type: 'get',
+								success: function(data) {
+								}
+							});
+						});
+						//
+						$('input[name="hide_asignadas"]').change(function() {
+						    if(this.checked) {
+								$.ajax({
+									url: '{% url "panel:index" %}',
+									data: {'hide_asignadas': '1'},
+									type: 'get',
+									success: function(data) {
+										console.log(data);
+									}
+								});
+						    } else {
+								$.ajax({
+									url: '{% url "panel:index" %}',
+									data: {'hide_asignadas': '0'},
+									type: 'get',
+									success: function(data) {
+										console.log(data);
+									}
+								});
+						    }
+						});
+
+					});
+
+					
+				</script>
+
+			</div>
+			<!-- main -->
+
+			<div id="sidebar-left"class="col-md-4">
+				<div id="ads-300-250" class="txt-c mb-large">
+					<img src="http://1.bp.blogspot.com/-di0CNCwcQkA/U3NBY00DW3I/AAAAAAAAEDU/VX6tZ94GBbM/s1600/300x250.png" width="300" height="250">
+					<div style="clear: both;"></div>
+				</div>
+
+
+
+				<div class="complaint-box">
+					<div class="content">
+					</div>
+				</div>
+
+			</div>
+			<!-- sidebar-left -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+
+{% endblock %}

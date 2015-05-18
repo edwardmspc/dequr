@@ -9,6 +9,8 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^', include('apps.adminpanel.urls', namespace='panel')),
+    url(r'^', include('apps.category.urls', namespace='category')),
     url(r'^', include('apps.company.urls', namespace='company')),
     url(r'^', include('apps.complaint.urls', namespace='complaint')),
     url(r'^', include('apps.general.urls', namespace='general')),

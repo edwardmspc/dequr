@@ -2,7 +2,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import View
-from .models import Category, SubCategory
+from apps.category.models import Category, SubCategory
 
 
 class CategorysView(View):
