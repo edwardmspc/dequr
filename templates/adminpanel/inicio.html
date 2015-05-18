@@ -12,7 +12,8 @@
 					<tbody>
 						<tr>
 							<!--<th scope="row">{{forloop.counter}}</th>-->
-							<th><label><input name="hide_asignadas" type="checkbox"/> Sin asignadas</label></th>
+							<th><label><input name="hide_asignadas" type="checkbox"/> Sin asignadas <small class="hint">({{companys_count}})</small></label></th>
+							<th></th>
 						</tr>
 					</tbody>
 				</table>
@@ -20,9 +21,10 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>First Name</th>
-							<th>Seleciona el Padre</th>
-							<th>Convertir a Padre</th>
+							<th>Nombre</th>
+							<th>Selecionar un Padre</th>
+							<th>Convertir en Padre</th>
+							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,9 +34,13 @@
 							<td>
 								<select id="{{subcompany.id}}">
 									<option selected="selected">---------</option>
+									{% for company in companys %}
+									<option value="{{company.id}}">{{company.name}}</option>
+									{% endfor %}
 								</select>
 							</td>
 							<td class="txt-c"><a href="#" id="{{subcompany.id}}" class="convert_to_father btn btn-inline btn-small btn-primary mb-small"><i class="fa fa-check"></i></a></td>
+							<td class="txt-c"><a href="#" id="{{subcompany.id}}" class="delete_child btn btn-inline btn-small btn-danger mb-small"><i class="fa fa-trash-o"></i></a></td>
 						</tr>
 						{% endfor %}
 
@@ -42,16 +48,33 @@
 				</table>
 				<script type="text/javascript">
 					$(document).ready(function() {
-						// Convertir a padre
-						$('a.convert_to_father').click(function() {
+						// Borrar a sub
+						$('a.delete_child').click(function() {
 							var element = $(this).parents("tr").remove();
 							var id = $(this).attr("id");
 
 							$.ajax({
 								url: '{% url "panel:index" %}',
+								data: {'delete_child': id},
+								type: 'get',
+								success: function(data) {
+								}
+							});
+						});
+						// Convertir a padre
+						$('a.convert_to_father').click(function() {
+							var element = $(this).parents("tr").remove();
+							var id = $(this).attr("id");
+							$.ajax({
+								url: '{% url "panel:index" %}',
 								data: {'convert_to_father': id},
 								type: 'get',
 								success: function(data) {
+									$("option").remove();
+									$("select").append('<option selected="selected">---------</option>');
+									for (var i = 0; i < data.length; i++) {
+										$("select").append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+									}
 								}
 							});
 						});

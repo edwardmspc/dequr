@@ -10,13 +10,27 @@ class IndexView(View):
     def get(self, request,  *args, **kwargs):
 
         if request.is_ajax():
+            if request.GET.get('delete_child', None):
+                subcompany_id = request.GET.get('delete_child', None)
+                child = SubCompany.objects.get(id=subcompany_id)
+                child.delete()
+                data = {}
+                mimetype = 'application/json'
+                return HttpResponse(data, mimetype)
+
             if request.GET.get('convert_to_father', None):
                 subcompany_id = request.GET.get('convert_to_father', None)
                 child = SubCompany.objects.get(id=subcompany_id)
                 parent = Company(name=child.name)
                 parent.save()
                 child.delete()
-                data = {}
+                results = []
+                for company in Company.objects.all():
+                    company_json = {}
+                    company_json['id'] = company.id
+                    company_json['name'] = company.name
+                    results.append(company_json)
+                data = json.dumps(results)
                 mimetype = 'application/json'
                 return HttpResponse(data, mimetype)
 
@@ -44,6 +58,9 @@ class IndexView(View):
                 return HttpResponse(data, mimetype)
         else:
             company = Company.objects.all()
-            subcompany = SubCompany.objects.all()[:100]
+            subcompany = SubCompany.objects.all()
+            companys_count = subcompany.filter(company=None).count()
+            subcompany = subcompany[:100]
             return render(request, 'adminpanel/inicio.html', {
-                'subcompanys': subcompany, 'companys': company, })
+                'subcompanys': subcompany, 'companys_count': companys_count,
+                'companys': company, })

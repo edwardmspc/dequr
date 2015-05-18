@@ -2,4 +2,9 @@ from django.contrib import admin
 from .models import Company
 
 
-admin.site.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'subcategory', 'email', 'phone',
+                    'twitter', 'facebook', 'web_url', 'is_approved',)
+    list_filter = ('category', 'subcategory',)
+
+admin.site.register(Company, CompanyAdmin)
