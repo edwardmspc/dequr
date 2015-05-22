@@ -6,6 +6,19 @@ from apps.company.models import (Company, SubCompany)
 from apps.category.models import (Category, SubCategory)
 
 
+class AJAXCompanyActivateView(View):
+    def get(self, request,  *args, **kwargs):
+        #if request.is_ajax():
+        if True:
+            company_id = request.GET.get('company', None)
+            company = Company.objects.get(id=company_id)
+            company.is_approved = True
+            company.save()
+            data = {}
+            mimetype = 'application/json'
+            return HttpResponse(data, mimetype)
+
+
 class AJAXChangeFacebookView(View):
     def get(self, request,  *args, **kwargs):
         #if request.is_ajax():
@@ -109,7 +122,7 @@ class AJAXChangeCategoryView(View):
 
 class ParentView(View):
     def get(self, request,  *args, **kwargs):
-        company = Company.objects.all()
+        company = Company.objects.all().filter(is_approved=False)
         category = Category.objects.all()
         subcategory = SubCategory.objects.all()
         return render(request, 'adminpanel/parent.html', {

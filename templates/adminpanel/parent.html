@@ -8,13 +8,13 @@
 	<div class="container">
 		<div class="row">
 			<div id="main" class="col-md-12">
-			<table class="table">
+			<!--<table class="table">
 					<tbody>
 						<tr>
 							<th><input type="text" id="search" placeholder="Buscar empresas similares [...]"></th>
 						</tr>
 					</tbody>
-				</table>
+				</table>-->
 				
 				<table class="table table-hover">
 					<thead>
@@ -60,16 +60,16 @@
 									<option selected="selected">---------</option>
 								</select>
 							</td>
-							<td><input type="text"  company="{{company.id}}" name="email" value="{{company.email}}" /></td>
-							<td><input type="text"  company="{{company.id}}" name="phone" value="{{company.phone}}" /></td>
-							<td><input type="text"  company="{{company.id}}" name="web_url" value="{{company.web_url}}" /></td>
-							<td><input type="text"  company="{{company.id}}" name="twitter" value="{{company.twitter}}" /></td>
-							<td><input type="text"  company="{{company.id}}" name="facebook" value="{{company.facebook}}" /></td>
+							<td><input type="text" company="{{company.id}}" name="email" value="{{company.email}}" /></td>
+							<td><input type="text" company="{{company.id}}" name="phone" value="{{company.phone}}" /></td>
+							<td><input type="text" company="{{company.id}}" name="web_url" value="{{company.web_url}}" /></td>
+							<td><input type="text" company="{{company.id}}" name="twitter" value="{{company.twitter}}" /></td>
+							<td><input type="text" company="{{company.id}}" name="facebook" value="{{company.facebook}}" /></td>
 							<td>
 							{% if company.is_approved %}
-								<a href="#" class="btn btn-inline btn-small btn-danger mb-small">Desactivar</a>
+								<a href="#" company="{{company.id}}" class="btn btn-inline btn-small btn-danger mb-small">Desactivar</a>
 							{% else %}
-								<a href="#" class="btn btn-inline btn-small btn-primary mb-small">Activar</a>
+								<a href="#" company="{{company.id}}" class="activate btn btn-inline btn-small btn-primary mb-small">Activar</a>
 							{% endif %}
 							</td>
 							
@@ -227,6 +227,18 @@
 									}
 								});
 						    }
+						});
+
+						$('a.activate').click(function() {
+							var company = $(this).attr("company");
+							console.log(company);
+							$.ajax({
+								url: '/AJAX_company_activate/',
+								data: {'company':company, },
+								type: 'get',
+								success: function(data) {
+								}
+							});
 						});
 						
 

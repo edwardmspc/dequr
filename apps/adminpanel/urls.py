@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from .views import IndexView, ParentView, AJAXChangeCategoryView, AJAXChangeSubCategoryView, AJAXChangeEmailView, AJAXChangeFacebookView, AJAXChangeTwitterView, AJAXChangeWebUrlView, AJAXChangePhoneView
+from .views import IndexView, ParentView, AJAXChangeCategoryView, AJAXChangeSubCategoryView, AJAXChangeEmailView, AJAXChangeFacebookView, AJAXChangeTwitterView, AJAXChangeWebUrlView, AJAXChangePhoneView, AJAXCompanyActivateView
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^AJAX_change_web_url/$', AJAXChangeWebUrlView.as_view(), name='AJAX_change_web_url'),
     url(r'^AJAX_change_twitter/$', AJAXChangeTwitterView.as_view(), name='AJAX_change_twitter'),
     url(r'^AJAX_change_facebook/$', AJAXChangeFacebookView.as_view(), name='AJAX_change_facebook'),
+    url(r'^AJAX_company_activate/$', AJAXCompanyActivateView.as_view(), name='AJAX_company_activate'),
 ]
