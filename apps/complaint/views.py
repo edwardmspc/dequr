@@ -293,6 +293,5 @@ class AjaxLoadSubCategory(View):
             data = json.dumps(results)
         else:
             data = 'fail'
-
         mimetype = 'application/json'
         return HttpResponse(data, mimetype)

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#id_1-place").geocomplete()
-          .bind("geocode:result", function(event, result){
-          })
+    .bind("geocode:result", function(event, result){
+    })
     //Omitimos los enlaces sin destino
     $('a[href="#"]').click(function(event) {
         event.preventDefault();
@@ -11,7 +11,7 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip()
     //$(function () {
     //})
-    
+
     //Popup
     /*
     //open popup
@@ -34,17 +34,17 @@ $(document).ready(function() {
         }
     });*/
 
-    $('.open_image').click(function(){
-        $("#MultiUploadAjax #image").click();
-    });
+$('.open_image').click(function(){
+    $("#MultiUploadAjax #image").click();
+});
 
-    $('.open_file').click(function(){
-        $("#MultiUploadAjax #audio").click();
-    });
+$('.open_file').click(function(){
+    $("#MultiUploadAjax #audio").click();
+});
 
-    $('#image, #audio').on('change', function(){
+$('#image, #audio').on('change', function(){
 
-        $('#MultiUploadAjax').ajaxForm({
+    $('#MultiUploadAjax').ajaxForm({
             //target: '#preview', 
             beforeSubmit:function(){
                 $("#loading").removeClass('hide');
@@ -60,7 +60,7 @@ $(document).ready(function() {
                 $("#loading").addClass('error');
             } 
         }).submit();
-    });
+});
         /*$.ajax({
             url: '/ajax_multiupload/',
             //data: {'term':category},
@@ -76,7 +76,7 @@ $(document).ready(function() {
     });
     var A=$("#imageloadstatus");
     var B=$("#imageloadbutton");
-*/
+    */
     function LoadSubCategory(category, assing_category) {
 
         $("#subcategoria").removeClass("hide");
@@ -112,20 +112,20 @@ $(document).ready(function() {
                //console.log("LoadCategory: ", data);
                $('#id_0-category').val(data.category);
                LoadSubCategory(data.category, data.subcategory);
-            },
-        }); 
+           },
+       }); 
     }
     
     $('#id_0-company').keyup(function() {
-         if(!$.trim(this.value).length) {
-            $('#id_0-company_val').val("");
-            $('#id_0-category').val($("#id_0-category option:first").val());
-            $("#subcategoria div").html("");
-            $("#subcategoria").addClass("hide");
-            $(".ui-autocomplete-empty-message").empty();
-            $(".ui-autocomplete-empty-message").removeClass('show');
-         }
-    });
+     if(!$.trim(this.value).length) {
+        $('#id_0-company_val').val("");
+        $('#id_0-category').val($("#id_0-category option:first").val());
+        $("#subcategoria div").html("");
+        $("#subcategoria").addClass("hide");
+        $(".ui-autocomplete-empty-message").empty();
+        $(".ui-autocomplete-empty-message").removeClass('show');
+    }
+});
 
     $('#id_0-category').change(function(event) {
         event.preventDefault();
@@ -160,14 +160,17 @@ $(document).ready(function() {
 
             LoadCategory(GOBAL_ID_COMPANY);
         },
+        create: function() {
+            $(this).data("ui-autocomplete")._renderItem = function( ul, item ) {
+                var inner_html = '<a><div class="list_item_container"><div class="image"><img src="' + item.image + '"></div><strong>' + item.label + '</strong><div class="description">' + item.description + '</div></div></a>';
+                return $( "<li></li>" )
+                .data( "item.autocomplete", item )
+                .append(inner_html)
+                .appendTo( ul );
+            };
+        }
         //search     : function(){$(this).addClass('ui-autocomplete-loading');},
         //open       : function(){$(this).removeClass('ui-autocomplete-loading');},
-    }).data("ui-autocomplete")._renderItem = function( ul, item ) {
-        var inner_html = '<a><div class="list_item_container"><div class="image"><img src="' + item.image + '"></div><strong>' + item.label + '</strong><div class="description">' + item.description + '</div></div></a>';
-        return $( "<li></li>" )
-            .data( "item.autocomplete", item )
-            .append(inner_html)
-            .appendTo( ul );
-    };
+    })
 
 });

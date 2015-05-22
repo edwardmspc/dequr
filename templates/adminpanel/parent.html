@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+
+<div id="wrapgeneral" class="mt-large">
+	<div class="container">
+		<div class="row">
+			<div id="main" class="col-md-12">
+			<table class="table">
+					<tbody>
+						<tr>
+							<th><input type="text" id="search" placeholder="Buscar empresas similares [...]"></th>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Category</th>
+							<th>SubCategory</th>
+							<th>Email</th>
+							<th>Telefono</th>
+							<th>Url</th>
+							<th>Twitter</th>
+							<th>Facebook</th>
+							<th>Aprovada</th>
+						</tr>
+					</thead>
+					<tbody class="companys">
+						{% for company in companys %}
+						<tr>
+							<td><input type="text" name="name" value="{{company.name}}" /></td>
+							<td>
+								<select class="categorys" company="{{company.id}}">
+									{% if company.category %}
+										<option>---------</option>
+									{% else %}
+										<option selected="selected">---------</option>
+									{% endif %}
+									{% for category in categorys %}
+										{% if company.category == category %}
+											<option selected="selected" value="{{category.id}}">{{category.name}}</option>
+										{% else %}
+											<option value="{{category.id}}">{{category.name}}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</td>
+							<td>
+								{% if company.subcategory %}
+								<input type="hidden" value="{{company.subcategory.id}}">
+								{% else %}
+								<input type="hidden" value="-1">
+								{% endif %}
+								<select  company="{{company.id}}" class="subc subcategorys-{{company.id}}">
+									<option selected="selected">---------</option>
+								</select>
+							</td>
+							<td><input type="text"  company="{{company.id}}" name="email" value="{{company.email}}" /></td>
+							<td><input type="text"  company="{{company.id}}" name="phone" value="{{company.phone}}" /></td>
+							<td><input type="text"  company="{{company.id}}" name="web_url" value="{{company.web_url}}" /></td>
+							<td><input type="text"  company="{{company.id}}" name="twitter" value="{{company.twitter}}" /></td>
+							<td><input type="text"  company="{{company.id}}" name="facebook" value="{{company.facebook}}" /></td>
+							<td>
+							{% if company.is_approved %}
+								<a href="#" class="btn btn-inline btn-small btn-danger mb-small">Desactivar</a>
+							{% else %}
+								<a href="#" class="btn btn-inline btn-small btn-primary mb-small">Activar</a>
+							{% endif %}
+							</td>
+							
+						</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+				<script type="text/javascript">
+					$(document).ready(function() {
+
+						$('.categorys').each(function() {
+							if ($(this).val() != "---------") {
+								category = $(this).val();
+								company = $(this).attr("company");
+								var html = '<option selected="selected">---------</option>';
+								$.ajax({
+									url: '/ajax_load_subcategory/',
+									data: {'term':category},
+									type: 'get',
+									success: function(data) {
+										
+										for (var i = 0, len = data.length; i < len; ++i) {
+											html += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+										} 
+										$('.subcategorys-'+company).html(html);
+										select = $('.subcategorys-'+company).siblings('input[type="hidden"]').val();
+										if (select != -1) {
+											$('.subcategorys-'+company).val(select);
+										}
+									},
+								});
+							}
+						});
+
+						$('.categorys').change(function() {
+							var select = $(this).val();
+							var company = $(this).attr("company")
+							var html = '<option selected="selected">---------</option>';
+							if (select != "---------") {
+								$.ajax({
+									url: '/ajax_load_subcategory/',
+									data: {'term':select},
+									type: 'get',
+									success: function(data) {
+										
+										for (var i = 0, len = data.length; i < len; ++i) {
+											html += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+										} 
+										$('.subcategorys-'+company).html(html);
+
+									},
+								});
+
+								$.ajax({
+									url: '/AJAX_change_category/',
+									data: {'company':company, 'category':select},
+									type: 'get',
+									success: function(data) {
+									},
+								});
+
+							} else{
+								$('.subcategorys-'+company).html(html);
+							}
+						});
+
+						$('.subc').change(function() {
+							var select = $(this).val();
+							var company = $(this).attr("company")
+							var html = '<option selected="selected">---------</option>';
+							if (select != "---------") {
+								$.ajax({
+									url: '/AJAX_change_subcategory/',
+									data: {'company':company, 'category':select},
+									type: 'get',
+									success: function(data) {
+									},
+								});
+							} else{
+								$('.subcategorys-'+company).html(html);
+							}
+						});
+
+						$('input[name="email"]').keyup(function(e) {
+						    var q = $(this).val();
+						    var company = $(this).attr("company");
+						    if(e.which == 13) {
+						    	//$(this).val("");
+							    $.ajax({
+									url: '/AJAX_change_email/',
+									data: {'company':company, 'email': q},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+						    }
+						});
+
+						$('input[name="phone"]').keyup(function(e) {
+						    var q = $(this).val();
+						    var company = $(this).attr("company");
+						    if(e.which == 13) {
+						    	//$(this).val("");
+							    $.ajax({
+									url: '/AJAX_change_phone/',
+									data: {'company':company, 'phone': q},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+						    }
+						});
+
+						$('input[name="web_url"]').keyup(function(e) {
+						    var q = $(this).val();
+						    var company = $(this).attr("company");
+						    if(e.which == 13) {
+						    	//$(this).val("");
+							    $.ajax({
+									url: '/AJAX_change_web_url/',
+									data: {'company':company, 'web_url': q},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+						    }
+						});
+
+						$('input[name="twitter"]').keyup(function(e) {
+						    var q = $(this).val();
+						    var company = $(this).attr("company");
+						    if(e.which == 13) {
+						    	//$(this).val("");
+							    $.ajax({
+									url: '/AJAX_change_twitter/',
+									data: {'company':company, 'twitter': q},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+						    }
+						});
+
+						$('input[name="facebook"]').keyup(function(e) {
+						    var q = $(this).val();
+						    var company = $(this).attr("company");
+						    if(e.which == 13) {
+						    	//$(this).val("");
+							    $.ajax({
+									url: '/AJAX_change_facebook/',
+									data: {'company':company, 'facebook': q},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+						    }
+						});
+						
+
+					});
+				</script>
+
+			</div>
+			<!-- main -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+
+{% endblock %}

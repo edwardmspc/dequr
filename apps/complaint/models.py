@@ -13,7 +13,7 @@ class Complaint(models.Model):
     company = models.ForeignKey(Company, null=True, blank=True)
     category = models.ForeignKey(Category, null=True)
     subcategory = models.ForeignKey(SubCategory, null=True, blank=True)
-    
+
     #image = models.ImageField(upload_to="complaint_documents", null=True, blank=True)
     #video = models.URLField(blank=True, null=True)
 

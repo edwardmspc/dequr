@@ -11,25 +11,40 @@
 			<table class="table">
 					<tbody>
 						<tr>
-							<!--<th scope="row">{{forloop.counter}}</th>-->
-							<th><label><input name="hide_asignadas" type="checkbox"/> Sin asignadas <small class="hint">({{companys_count}})</small></label></th>
-							<th></th>
+							<!--<th scope="row">{{forloop.counter}}</th>
+							<th><label><input name="hide_asignadas" type="checkbox"/> Sin asignadas <small class="hint">({{companys_count}})</small></label></th>-->
+							<th><input type="text" id="search" placeholder="Buscar empresas similares [...]"></th>
+							<th>
+								<select id="select_masive">
+									<option selected="selected">---------</option>
+									{% for company in companys %}
+									<option value="{{company.id}}">{{company.name}}</option>
+									{% endfor %}
+								</select>
+							</th>
+							<th><a href="#" class="asign_masive btn btn-inline btn-small btn-primary mb-small"><i class="fa fa-check"></i></a></th>
+						</tr>
+						<tr>
+							<th><input type="text" id="create_fahter" placeholder="Crear un nuevo padre"></th>
+							<th><a href="#" class="create_fahter btn btn-inline btn-small btn-primary mb-small"><i class="fa fa-check"></i></a></th>
 						</tr>
 					</tbody>
 				</table>
 				
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
+							<th><input name="all_select" type="checkbox"/></th>
 							<th>Nombre</th>
 							<th>Selecionar un Padre</th>
 							<th>Convertir en Padre</th>
 							<th>Eliminar</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="companys">
 						{% for subcompany in subcompanys %}
 						<tr>
+							<th><input id="{{subcompany.id}}" class="this" name="this" type="checkbox"/></th>
 							<td>{{subcompany.name}}</td>
 							<td>
 								<select id="{{subcompany.id}}">
@@ -48,18 +63,86 @@
 				</table>
 				<script type="text/javascript">
 					$(document).ready(function() {
+						//
+						$('a.create_fahter').click(function() {
+							var q = $('#create_fahter').val();
+							$.ajax({
+								url: '{% url "panel:index" %}',
+								data: {'create_fahter': q},
+								type: 'get',
+								success: function(data) {
+									$("option").remove();
+									$("select").append('<option selected="selected">---------</option>');
+									for (var i = 0; i < data.length; i++) {
+										$("select").append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+									}
+									$('#create_fahter').val("");
+								}
+							});
+						});
+						//
+						$('a.asign_masive').click(function() {
+							var checkbox_masive = "";
+							$('.this:checked').each(function() {
+							    checkbox_masive += $(this).attr('id')+',';
+								$(this).parents("tr").remove();
+							});
+							checkbox_masive = checkbox_masive.substring(0,checkbox_masive.length-1);
+
+							var select_masive = $('#select_masive option:selected').val();
+							$('#select_masive').val("---------");
+
+
+							if ((select_masive != "---------") & (checkbox_masive.length > 0)) {
+								$.ajax({
+									url: '{% url "panel:index" %}',
+									data: {'checkbox_masive': checkbox_masive, 'select_masive':select_masive,},
+									type: 'get',
+									success: function(data) {
+									}
+								});
+							}
+						});
+						//
+						$('#search').keyup(function(e) {
+						    var q = $(this).val();
+						    if(e.which == 13) {
+						    	$(this).val("");
+							    $.ajax({
+									url: '{% url "panel:index" %}',
+									data: {'search': q},
+									type: 'get',
+									success: function(data) {
+										html = '<option selected="selected">---------</option>';
+										html2 = '';
+										for (var i = 0; i < data.company.length; i++) {
+											html += '<option value="'+data.company[i].id+'">'+data.company[i].name+'</option>';
+										};
+										for (var i = 0; i < data.q.length; i++) {
+											html2 += '<tr> <th><input id="'+data.q[i].id+'" class="this" name="this" type="checkbox"/></th> <td>'+data.q[i].name+'</td> <td> <select id="'+data.q[i].id+'"> '+html+' </select> </td> <td class="txt-c"><a href="#" id="'+data.q[i].id+'" class="convert_to_father btn btn-inline btn-small btn-primary mb-small"><i class="fa fa-check"></i></a></td> <td class="txt-c"><a href="#" id="'+data.q[i].id+'" class="delete_child btn btn-inline btn-small btn-danger mb-small"><i class="fa fa-trash-o"></i></a></td></tr>';
+										}
+										$('.companys').html(html2);
+									}
+								});
+						    }
+						});
+
+
+						$('input[name="all_select"]').click(function() {  
+					        if(this.checked) {
+					            $('.this').prop('checked', true);
+					        } else {  
+					            $('.this').prop('checked', false);
+					        }
+					        
+					    }); 
+
 						// Borrar a sub
-						$('a.delete_child').click(function() {
+						$('a.delete_child').change(function() {
 							var element = $(this).parents("tr").remove();
 							var id = $(this).attr("id");
 
-							$.ajax({
-								url: '{% url "panel:index" %}',
-								data: {'delete_child': id},
-								type: 'get',
-								success: function(data) {
-								}
-							});
+							
 						});
 						// Convertir a padre
 						$('a.convert_to_father').click(function() {
@@ -95,7 +178,7 @@
 									data: {'hide_asignadas': '0'},
 									type: 'get',
 									success: function(data) {
-										console.log(data);
+										//console.log(data);
 									}
 								});
 						    }
@@ -110,15 +193,17 @@
 			<!-- main -->
 
 			<div id="sidebar-left"class="col-md-4">
-				<div id="ads-300-250" class="txt-c mb-large">
-					<img src="http://1.bp.blogspot.com/-di0CNCwcQkA/U3NBY00DW3I/AAAAAAAAEDU/VX6tZ94GBbM/s1600/300x250.png" width="300" height="250">
-					<div style="clear: both;"></div>
-				</div>
-
-
 
 				<div class="complaint-box">
 					<div class="content">
+						<ol class="list">
+                            <li class="item-box">
+                                <a href='{% url "panel:index" %}'>
+                                    <i class="fa fa-edit"></i>
+                                    <p class="content">Moderar hijos</p>
+                                </a>
+                            </li>
+                        </ol>
 					</div>
 				</div>
 
