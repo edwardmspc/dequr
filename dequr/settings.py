@@ -128,8 +128,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dequr',
         'USER': 'dequr',
-        'PASSWORD': 'DequR2014@',
-        'HOST': '190.75.158.102',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '3306',
     }
 }
