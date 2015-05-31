@@ -126,8 +126,8 @@ WSGI_APPLICATION = 'dequr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dequr',
-        'USER': 'dequr',
+        'NAME': '',
+        'USER': '',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '3306',
